@@ -23,7 +23,7 @@ export default function QuestionDetails() {
                 return;
             }
     
-            loadQuestions();
+            loadQuestion();
         }, [user,id]);
 
 
