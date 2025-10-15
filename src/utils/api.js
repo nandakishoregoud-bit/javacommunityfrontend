@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-    baseURL: "https://javaconnect-1.onrender.com/",
+    baseURL: "https://javaconnect-1.onrender.com",
 });
 
 // Add interceptor to attach token except for /api/* endpoints
