@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import javaImage from "../assets/javacommunity.png";
+import "./Home.css"; // create a separate CSS file for better styling
 
 export default function Home() {
     return (
@@ -26,29 +27,23 @@ export default function Home() {
             </section>
 
             {/* Community Section */}
-            <section className="community-section" style={{ display: "flex", alignItems: "center", gap: "2rem", padding: "2rem 0" }}>
-
-                {/* Right: Image */}
-                <div className="community-image" style={{ flex: 1, textAlign: "center" }}>
-                    <img
-                        src={javaImage}
-                        alt="Developer Community"
-                        style={{ maxWidth: "100%", borderRadius: "10px" }}
-                    />
+            <section className="community-section">
+                {/* Image */}
+                <div className="community-image">
+                    <img src={javaImage} alt="Developer Community" />
                 </div>
-                {/* Left: Content */}
-                <div className="community-content" style={{ flex: 1 }}>
+
+                {/* Content */}
+                <div className="community-content">
                     <h2>👥 Join Our Developer Community</h2>
                     <p>
                         Learn, contribute, and collaborate with other passionate Java developers.
                         Whether you're a beginner or an expert, there's always something new to discover.
                     </p>
-                    <Link to="/register" className="join-btn" style={{ display: "inline-block", marginTop: "1rem", padding: "0.5rem 1rem", background: "#2563eb", color: "#fff", borderRadius: "5px", textDecoration: "none" }}>
+                    <Link to="/register" className="join-btn">
                         Join Now
                     </Link>
                 </div>
-
-                
             </section>
         </div>
     );

@@ -1,0 +1,52 @@
+.community-section {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem 0;
+}
+
+/* Equal width */
+.community-content,
+.community-image {
+    flex: 1;
+}
+
+/* Image styling */
+.community-image img {
+    max-width: 100%;
+    border-radius: 10px;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Join button */
+.join-btn {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background: #2563eb;
+    color: #fff;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+/* Responsive for mobile */
+@media (max-width: 768px) {
+    .community-section {
+        flex-direction: column;
+        /* stack content vertically */
+        text-align: center;
+    }
+
+    .community-content,
+    .community-image {
+        flex: unset;
+        /* remove equal width */
+        width: 100%;
+    }
+
+    .community-image img {
+        margin-bottom: 1rem;
+        /* spacing below image if needed */
+    }
+}
