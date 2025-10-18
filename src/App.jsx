@@ -30,6 +30,7 @@ import Map from "./pages/Notes/Collections/Map";
 import ConditionalStatements from "./pages/Notes/CoreJava/ControlStatements/ConditionalStatements";
 import LoopingStatements from "./pages/Notes/CoreJava/ControlStatements/LoopingStatements";
 import IndexControlStatements from "./pages/Notes/CoreJava/ControlStatements";
+import JavaHistory from "./pages/Notes/JavaHistory";
 
 
 
@@ -49,6 +50,8 @@ export default function App() {
             <Route path="/profile" element={<Profile />} />
             <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route path="/notes" element={<NotesLayout />}>
+              <Route index element={<JavaHistory />} />
+              
               {/* Core Java */}
               <Route path="core-java" element={<CoreJavaIndex />} />
               <Route path="core-java/datatypes" element={<DataTypes />} />
