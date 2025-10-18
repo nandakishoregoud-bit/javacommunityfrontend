@@ -51,7 +51,7 @@ export default function Navbar() {
                     <Link to="/questions" onClick={() => setMenuOpen(false)}>Questions</Link>
                     {user && <Link to="/my-questions" onClick={() => setMenuOpen(false)}>My Questions</Link>}
                     {user && <Link to="/profile" onClick={() => setMenuOpen(false)}>Profile</Link>}
-
+                    <Link to="/notes" onClick={() => setMenuOpen(false)}>Notes</Link>
                     {!user ? (
                         <>
                             <Link to="/login" onClick={() => setMenuOpen(false)}>Login</Link>
@@ -62,6 +62,7 @@ export default function Navbar() {
                             Logout
                         </button>
                     )}
+
                 </div>
             </div>
         </nav>
