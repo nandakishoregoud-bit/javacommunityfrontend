@@ -27,7 +27,7 @@ import CollectionsIndex from "./pages/Notes/Collections/index";
 import List from "./pages/Notes/Collections/List";
 import Set from "./pages/Notes/Collections/Set";
 import Map from "./pages/Notes/Collections/Map";
-import ConditionalStatements from "./pages/Notes/CoreJava/ControlStatements/conditionalStatements";
+import ConditionalStatements from "./pages/Notes/CoreJava/ControlStatements/ConditionalStatements";
 import LoopingStatements from "./pages/Notes/CoreJava/ControlStatements/LoopingStatements";
 import IndexControlStatements from "./pages/Notes/CoreJava/ControlStatements";
 

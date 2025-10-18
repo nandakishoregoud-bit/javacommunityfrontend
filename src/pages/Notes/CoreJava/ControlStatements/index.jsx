@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
-import ConditionalStatements from "./conditionalStatements";
 import LoopingStatements from "./LoopingStatements";
+import ConditionalStatements from "./ConditionalStatements";
 
 export default function IndexControlStatements() {
     return (

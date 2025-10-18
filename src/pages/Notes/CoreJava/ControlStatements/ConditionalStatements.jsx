@@ -4,7 +4,7 @@ export default function ConditionalStatements() {
     const [showAnswers, setShowAnswers] = useState(false);
     const [selected, setSelected] = useState(Array(4).fill(null));
 
-    
+
     const quiz = [
         {
             q: "What is the difference between if-else and switch statements?",
