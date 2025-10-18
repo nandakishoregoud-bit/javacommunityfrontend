@@ -5,23 +5,51 @@ import { FaJava } from "react-icons/fa";
 export default function Sidebar({ collapsed, toggleSidebar }) {
     const topics = [
         {
+            name: "You should know",
+            path: "java",
+            icon: <FaJava />,
+            subtopics: [
+                { name: "java history", path: "history" },
+                { name: "Install Java", path: "installjava" },
+            ],
+        },
+        {
+            name: "Basic codes",
+            path: "java",
+            icon: <FaJava />,
+            subtopics: [
+                { name: "First Java Program", path: "firstjavaprogram" },
+                { name: "what's main() and args", path: "mainmethodandargs" },
+                { name: "Input/Output in Java", path: "inputoutput"},
+            ],
+        },
+
+
+        {
             name: "Core Java",
             path: "core-java",
             icon: <FaJava />,
             subtopics: [
                 { name: "Data Types", path: "datatypes" },
-                {
-                    name: "Control Statements",
-                    path: "control-statements",
-                    subsubtopics: [
-                        { name: "Conditional Statements", path: "conditional-statements" },
-                        { name: "Looping Statements", path: "looping-statements" },
-                    ],
-                },
+                { name: "Type Casting & Variables", path: "type-casting" },
+                { name: "Operators", path: "operators"},
+                { name: "Conditional Statements", path: "conditional-statements" },
+                { name: "Looping Statements", path: "looping-statements" },
                 { name: "Methods", path: "methods" },
                 { name: "Exception Handling", path: "exception-handling" },
+                
+                
             ],
         },
+        {
+            name: "Arrays",
+            path: "arrays",
+            icon: <FaJava />,
+            subtopics: [
+                { name: "Arrays In Java", path: "arraysinjava" },
+            ],
+        },
+
         {
             name: "OOPs Concepts",
             path: "oops",

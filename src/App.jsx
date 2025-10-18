@@ -27,11 +27,16 @@ import CollectionsIndex from "./pages/Notes/Collections/index";
 import List from "./pages/Notes/Collections/List";
 import Set from "./pages/Notes/Collections/Set";
 import Map from "./pages/Notes/Collections/Map";
-import ConditionalStatements from "./pages/Notes/CoreJava/ControlStatements/ConditionalStatements";
-import LoopingStatements from "./pages/Notes/CoreJava/ControlStatements/LoopingStatements";
-import IndexControlStatements from "./pages/Notes/CoreJava/ControlStatements";
+import ConditionalStatements from "./pages/Notes/CoreJava/ConditionalStatements";
+import LoopingStatements from "./pages/Notes/CoreJava/LoopingStatements";
 import JavaHistory from "./pages/Notes/JavaHistory";
-
+import InstallJava from "./pages/Notes/java/InstallJava";
+import FirstJavaProgram from "./pages/Notes/java/FirstJavaProgram";
+import MainMethodAndArgs from "./pages/Notes/java/MainMethodAndArgs";
+import InputOutputInJava from "./pages/Notes/java/InputOutputInJava";
+import TypeCastingVariablesConstants from "./pages/Notes/CoreJava/TypeCastingVariablesConstants";
+import Operators from "./pages/Notes/CoreJava/Operators";
+import ArraysInJava from "./pages/Notes/Arrays/ArraysInJava";
 
 
 export default function App() {
@@ -51,16 +56,25 @@ export default function App() {
             <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route path="/notes" element={<NotesLayout />}>
               <Route index element={<JavaHistory />} />
-              
+
+              <Route path="java/installjava" element={< InstallJava />} />
+              <Route path="java/history" element={< JavaHistory />} />
+              <Route path="java/firstjavaprogram" element={< FirstJavaProgram />} />
+              <Route path="java/mainmethodandargs" element={< MainMethodAndArgs />} />
+              <Route path="java/inputoutput" element={< InputOutputInJava />} />
+
               {/* Core Java */}
               <Route path="core-java" element={<CoreJavaIndex />} />
               <Route path="core-java/datatypes" element={<DataTypes />} />
-              <Route path="core-java/control-statements/*" element={<IndexControlStatements />} />
-              <Route path="core-java/control-statements/conditional-statements" element={<ConditionalStatements />} />
-              <Route path="core-java/control-statements/looping-statements" element={<LoopingStatements />} />
+              <Route path="core-java/conditional-statements" element={<ConditionalStatements />} />
+              <Route path="core-java/looping-statements" element={<LoopingStatements />} />
 
               <Route path="core-java/methods" element={<Methods />} />
               <Route path="core-java/exception-handling" element={<ExceptionHandling />} />
+              <Route path="core-java/type-casting" element={<TypeCastingVariablesConstants />} />
+              <Route path="core-java/operators" element={< Operators />} />
+
+              <Route path="arrays/arraysinjava" element={< ArraysInJava />} />
 
               {/* OOPs */}
               <Route path="oops" element={<OOPsIndex />} />
@@ -73,7 +87,7 @@ export default function App() {
               <Route path="collections/list" element={<List />} />
               <Route path="collections/set" element={<Set />} />
               <Route path="collections/map" element={<Map />} />
-              
+
 
               {/* Streams */}
               <Route path="streams" element={<StreamsIndex />} />
