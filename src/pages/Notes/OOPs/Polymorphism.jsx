@@ -51,11 +51,44 @@ export default function Polymorphism() {
         <div style={{ fontFamily: 'Arial', lineHeight: 2, padding: '1rem', maxWidth: 800, margin: 'auto' }}>
             <h1>Polymorphism in Java</h1>
             <p>
-                Polymorphism allows objects to take multiple forms. It enables the same method or object to behave differently
-                in different situations. It mainly includes <b>method overloading</b> (compile-time) and <b>method overriding</b> (runtime).
+                <strong>Polymorphism</strong> is one of the four main principles of Object-Oriented Programming (OOP).
+                The word “Polymorphism” means <strong>“many forms”</strong>. In Java, it allows an object, method, or operator
+                to behave in different ways depending on the context.
             </p>
 
-            <h2>🔹 Example: Method Overloading (Compile-time)</h2>
+            <p>
+                It enables the same method or object to have multiple implementations. For example, the <code>draw()</code> method
+                in different classes like <code>Circle</code> and <code>Rectangle</code> can perform different actions even though
+                the method name is the same.
+            </p>
+
+            <h2>🔹 Why Use Polymorphism?</h2>
+            <ul>
+                <li><strong>Flexibility:</strong> You can write code that works with objects of different classes seamlessly.</li>
+                <li><strong>Reusability:</strong> You can reuse methods with different implementations.</li>
+                <li><strong>Maintainability:</strong> Easier to update or extend your program.</li>
+            </ul>
+
+            <h2>🔹 Real-World Analogy</h2>
+            <p>
+                Think of the word <b>“draw”</b> — the meaning depends on the context.
+                An artist “draws” a picture, a bank “draws” money, and a curtain “draws” closed.
+                The same action (draw) behaves differently depending on the object — that’s **Polymorphism!**
+            </p>
+
+            <h2>🔹 Types of Polymorphism in Java</h2>
+            <ul>
+                <li><strong>Compile-time Polymorphism (Static Polymorphism):</strong> Achieved using <b>method overloading</b>. The decision about which method to call is made at compile time.</li>
+                <li>compile-time Polymorphism is nothing but more then one method having same name in same class but with different parameters to perform different tasks is nothing but method<strong> Overloading</strong></li>
+                <li><strong>Runtime Polymorphism (Dynamic Polymorphism):</strong> Achieved using <b>method overriding</b>. The decision about which method to call is made at runtime based on the actual object type.</li>
+                <li>Runtime Polymorphism is nothing but more then one method having same name with same parameters but in parent and child class to perform same tasks is nothing but method <strong>Overriding</strong></li>
+            </ul>
+
+            <h2>🔹 Example 1: Method Overloading (Compile-time Polymorphism)</h2>
+            <p>
+                In method overloading, multiple methods in the same class have the same name but different parameter types or counts.
+                The compiler decides which version to use based on the arguments.
+            </p>
             <pre style={{ background: '#eee', padding: '10px', borderRadius: '5px' }}>
                 <code>{`class MathUtils {
     int add(int a, int b) {
@@ -76,7 +109,17 @@ public class Main {
 }`}</code>
             </pre>
 
-            <h2>🔹 Example: Method Overriding (Runtime)</h2>
+            <h2>🔹 Output</h2>
+            <pre style={{ background: '#e8f5e9', padding: '10px', borderRadius: '5px' }}>
+                <code>{`15
+6.0`}</code>
+            </pre>
+
+            <h2>🔹 Example 2: Method Overriding (Runtime Polymorphism)</h2>
+            <p>
+                In method overriding, a subclass provides a specific implementation of a method that is already defined in its superclass.
+                The method that gets executed is determined at runtime, depending on the object type.
+            </p>
             <pre style={{ background: '#eee', padding: '10px', borderRadius: '5px' }}>
                 <code>{`class Animal {
     void sound() {
@@ -93,10 +136,54 @@ class Dog extends Animal {
 
 public class Main {
     public static void main(String[] args) {
-        Animal myDog = new Dog();
+        Animal myDog = new Dog(); // reference type = Animal, object type = Dog
         myDog.sound(); // calls overridden method in Dog
     }
 }`}</code>
+            </pre>
+
+            <h2>🔹 Output</h2>
+            <pre style={{ background: '#e8f5e9', padding: '10px', borderRadius: '5px' }}>
+                <code>{`Bark`}</code>
+            </pre>
+
+            <h2>🔹 Example 3: Polymorphism in Action</h2>
+            <pre style={{ background: '#eee', padding: '10px', borderRadius: '5px' }}>
+                <code>{`class Shape {
+    void draw() {
+        System.out.println("Drawing a shape");
+    }
+}
+
+class Circle extends Shape {
+    @Override
+    void draw() {
+        System.out.println("Drawing a circle");
+    }
+}
+
+class Rectangle extends Shape {
+    @Override
+    void draw() {
+        System.out.println("Drawing a rectangle");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Shape s1 = new Circle();
+        Shape s2 = new Rectangle();
+
+        s1.draw();
+        s2.draw();
+    }
+}`}</code>
+            </pre>
+
+            <h2>🔹 Output</h2>
+            <pre style={{ background: '#e8f5e9', padding: '10px', borderRadius: '5px' }}>
+                <code>{`Drawing a circle
+Drawing a rectangle`}</code>
             </pre>
 
             <h2>📝 Test Yourself: Polymorphism Quiz</h2>
@@ -158,7 +245,9 @@ public class Main {
             )}
 
             <p style={{ background: "#e0f2fe", padding: "1rem", borderRadius: "8px" }}>
-                💡 Tip: Use polymorphism to write flexible and reusable code. Overloading is determined at compile-time, while overriding is determined at runtime.
+                💡 <strong>Tip:</strong> Use polymorphism to make your code flexible and maintainable.
+                Overloading is decided at <b>compile-time</b>, while overriding is decided at <b>runtime</b>.
+                This helps you design extensible and reusable code.
             </p>
         </div>
     );

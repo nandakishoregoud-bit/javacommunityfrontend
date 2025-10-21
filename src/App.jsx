@@ -37,6 +37,8 @@ import InputOutputInJava from "./pages/Notes/java/InputOutputInJava";
 import TypeCastingVariablesConstants from "./pages/Notes/CoreJava/TypeCastingVariablesConstants";
 import Operators from "./pages/Notes/CoreJava/Operators";
 import ArraysInJava from "./pages/Notes/Arrays/ArraysInJava";
+import Queue from "./pages/Notes/Collections/Queue";
+import Stack from "./pages/Notes/Collections/Stack";
 
 
 export default function App() {
@@ -59,9 +61,9 @@ export default function App() {
 
               <Route path="java/installjava" element={< InstallJava />} />
               <Route path="java/history" element={< JavaHistory />} />
-              <Route path="java/firstjavaprogram" element={< FirstJavaProgram />} />
-              <Route path="java/mainmethodandargs" element={< MainMethodAndArgs />} />
-              <Route path="java/inputoutput" element={< InputOutputInJava />} />
+              <Route path="java1/firstjavaprogram" element={< FirstJavaProgram />} />
+              <Route path="java1/mainmethodandargs" element={< MainMethodAndArgs />} />
+              <Route path="java1/inputoutput" element={< InputOutputInJava />} />
 
               {/* Core Java */}
               <Route path="core-java" element={<CoreJavaIndex />} />
@@ -87,6 +89,8 @@ export default function App() {
               <Route path="collections/list" element={<List />} />
               <Route path="collections/set" element={<Set />} />
               <Route path="collections/map" element={<Map />} />
+              <Route path="collections/queue" element={<Queue />} />
+              <Route path="collections/stack" element={<Stack />} />
 
 
               {/* Streams */}

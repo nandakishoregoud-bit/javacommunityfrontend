@@ -15,7 +15,7 @@ export default function Sidebar({ collapsed, toggleSidebar }) {
         },
         {
             name: "Basic codes",
-            path: "java",
+            path: "java1",
             icon: <FaJava />,
             subtopics: [
                 { name: "First Java Program", path: "firstjavaprogram" },
@@ -69,6 +69,8 @@ export default function Sidebar({ collapsed, toggleSidebar }) {
                 { name: "List", path: "list" },
                 { name: "Set", path: "set" },
                 { name: "Map", path: "map" },
+                { name: "Queue", path: "queue" },
+                { name: "Stack", path: "stack" },
             ],
         },
         {
