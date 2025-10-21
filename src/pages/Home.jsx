@@ -3,7 +3,7 @@ import javaImage from "../assets/javacommunity.png";
 import jamesGosling from "../assets/jamesgosling.jpg";
 import billyjoy from "../assets/billyjoy.jpeg";
 import patrickNaughton from "../assets/patricknaughton.jpeg";
-import herbSchildt from "../assets/Herbertschildt.jpeg";
+import herbSchildt from "../assets/HerbertSchildt.jpeg";
 import "./Home.css";
 
 
