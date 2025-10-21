@@ -30,6 +30,54 @@
     text-decoration: none;
 }
 
+.about-section,
+.java-legends,
+.closing-section {
+    padding: 3rem 2rem;
+    max-width: 1000px;
+    margin: auto;
+    text-align: center;
+    line-height: 1.8;
+}
+
+.about-section ul {
+    text-align: left;
+    display: inline-block;
+    margin-top: 1rem;
+}
+
+.legend-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.legend img {
+    width: 100%;
+    max-width: 200px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+}
+
+.legend h3 {
+    color: #e76f00;
+}
+
+.join-btn {
+    display: inline-block;
+    background: #e76f00;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.join-btn:hover {
+    background: #cc5c00;
+}
+
 /* Responsive for mobile */
 @media (max-width: 768px) {
     .community-section {

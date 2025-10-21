@@ -1,5 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import javalogo from "/javalogo.png";
 
 export default function Navbar() {
     const [user, setUser] = useState(null);
@@ -32,7 +33,7 @@ export default function Navbar() {
             <div className="nav-container">
                 <div className="logo">
                     <img
-                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg"
+                        src={javalogo}
                         alt="Java Logo"
                     />
                     <Link to="/">JavaConnect</Link>
