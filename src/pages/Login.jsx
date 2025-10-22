@@ -17,10 +17,7 @@ export default function Login() {
             const res = await api.post("api/auth/login", form);
             if (res.data.success) {
                 setMessage(res.data.message);
-                // save user in localStorage
                 localStorage.setItem("user", JSON.stringify(res.data.data));
-                console.log("User logged in:", res.data.data);
-                console.log("message:", res.data.message);
                 window.dispatchEvent(new Event("userChanged"));
                 navigate("/");
             } else {
@@ -35,14 +32,16 @@ export default function Login() {
         <div
             style={{
                 maxWidth: "400px",
-                margin: "50px auto",
-                padding: "20px",
-                background: "#fff",
-                borderRadius: "10px",
-                boxShadow: "0 0 10px rgba(0,0,0,0.1)",
+                margin: "60px auto",
+                padding: "30px",
+                background: "#ffffff",
+                borderRadius: "12px",
+                boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+                fontFamily: "'Inter', sans-serif",
             }}
         >
-            <h2 style={{ textAlign: "center", marginBottom: "20px" }}>Login</h2>
+            <h2 style={{ textAlign: "center", marginBottom: "25px", color: "#1e293b" }}>Login</h2>
+
             <form onSubmit={handleSubmit}>
                 <input
                     type="email"
@@ -50,7 +49,14 @@ export default function Login() {
                     placeholder="Email"
                     value={form.email}
                     onChange={handleChange}
-                    style={{ width: "100%", padding: "10px", marginBottom: "10px" }}
+                    required
+                    style={{
+                        width: "100%",
+                        padding: "10px",
+                        marginBottom: "12px",
+                        border: "1px solid #cbd5e1",
+                        borderRadius: "6px",
+                    }}
                 />
                 <input
                     type="password"
@@ -58,40 +64,74 @@ export default function Login() {
                     placeholder="Password"
                     value={form.password}
                     onChange={handleChange}
-                    style={{ width: "100%", padding: "10px", marginBottom: "10px" }}
+                    required
+                    style={{
+                        width: "100%",
+                        padding: "10px",
+                        marginBottom: "16px",
+                        border: "1px solid #cbd5e1",
+                        borderRadius: "6px",
+                    }}
                 />
                 <button
                     type="submit"
                     style={{
                         width: "100%",
-                        background: "#007bff",
+                        background: "#2563eb",
                         color: "#fff",
                         padding: "10px",
                         border: "none",
-                        borderRadius: "5px",
+                        borderRadius: "6px",
                         cursor: "pointer",
+                        fontWeight: "600",
+                        transition: "background 0.3s ease",
                     }}
+                    onMouseOver={(e) => (e.target.style.background = "#1d4ed8")}
+                    onMouseOut={(e) => (e.target.style.background = "#2563eb")}
                 >
                     Login
                 </button>
             </form>
+
             {message && (
                 <p
                     style={{
                         textAlign: "center",
-                        marginTop: "10px",
+                        marginTop: "12px",
                         color: message.includes("failed") ? "red" : "green",
+                        fontWeight: "500",
                     }}
                 >
                     {message}
                 </p>
             )}
-            <p style={{ textAlign: "center", marginTop: "15px" }}>
+
+            <p style={{ textAlign: "center", marginTop: "18px" }}>
                 <a href="/forgot-password" style={{ color: "#2563eb", textDecoration: "none" }}>
                     Forgot Password?
                 </a>
             </p>
 
+            {/* ✅ Add Privacy Notice */}
+            <p
+                style={{
+                    fontSize: "0.85rem",
+                    textAlign: "center",
+                    color: "#64748b",
+                    marginTop: "20px",
+                    lineHeight: 1.5,
+                }}
+            >
+                By logging in, you agree to our{" "}
+                <a href="/privacy-policy" style={{ color: "#2563eb", textDecoration: "none" }}>
+                    Privacy Policy
+                </a>{" "}
+                {`and `}
+                <a href="/terms" style={{ color: "#2563eb", textDecoration: "none" }}>
+                    Terms & Conditions
+                </a>
+                .
+            </p>
         </div>
     );
 }

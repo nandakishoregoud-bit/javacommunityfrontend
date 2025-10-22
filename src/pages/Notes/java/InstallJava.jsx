@@ -30,7 +30,7 @@ export default function InstallJava() {
 
             <h2>Which Java version should I install?</h2>
             <p>
-                For learning and most production work, pick a Long-Term Support (LTS) release such as <strong>Java 17</strong> or
+                For learning and most production work, pick a Long-Term Support (LTS) release such as
                 <strong> Java 17 or Java 21</strong>. Newer non-LTS releases add features, but LTS versions provide stability and wider tool support.
             </p>
 

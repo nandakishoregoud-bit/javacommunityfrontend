@@ -44,16 +44,16 @@ export default function JavaHistory() {
                 </p>
                 <ul>
                     <li>
-                        <strong>JVM (Java Virtual Machine):</strong> The runtime engine that executes Java bytecode. It provides
-                        platform-independent execution by translating bytecode to machine code at runtime.
+                        <strong>JDK (Java Development Kit):</strong> A superset of JRE. It includes the JRE plus development tools
+                        such as <code>javac</code> (compiler), <code>jar</code>, debuggers, and other utilities. Developers install JDK.
                     </li>
                     <li>
                         <strong>JRE (Java Runtime Environment):</strong> A package that contains the JVM plus standard libraries
                         required to run Java programs. End-users typically install JRE to run Java apps.
                     </li>
                     <li>
-                        <strong>JDK (Java Development Kit):</strong> A superset of JRE. It includes the JRE plus development tools
-                        such as <code>javac</code> (compiler), <code>jar</code>, debuggers, and other utilities. Developers install JDK.
+                        <strong>JVM (Java Virtual Machine):</strong> The runtime engine that executes Java bytecode. It provides
+                        platform-independent execution by translating bytecode to machine code at runtime.
                     </li>
                 </ul>
             </section>
@@ -176,7 +176,22 @@ java HelloWorld         # JVM loads HelloWorld.class and runs it`}
                     <li><strong>Java 8 (2014):</strong> lambda expressions, Stream API, new Date-Time API — very influential.</li>
                     <li><strong>Java 9+ (2017 onward):</strong> modular system (JPMS), faster release cadence, additions like var, records, pattern matching and virtual threads (ongoing improvements).</li>
                     <li><strong>LTS (Long Term Support) versions:</strong> Java 8, Java 11, Java 17 are LTS releases many production systems prefer.</li>
+                    <li>
+                        <strong>Java 21 (2023 LTS):</strong> virtual threads (Project Loom),
+                        pattern matching for switch, record patterns, and more.
+                    </li>
+
                 </ul>
+
+                <h3>Modern Java Ecosystem</h3>
+                <ul>
+                    <li><strong>Build tools:</strong> Maven, Gradle</li>
+                    <li><strong>Frameworks:</strong> Spring Boot, Jakarta EE</li>
+                    <li><strong>Testing:</strong> JUnit 5, TestNG</li>
+                    <li><strong>Other JVM languages:</strong> Kotlin, Scala</li>
+                    <li><strong>Monitoring & profiling:</strong> VisualVM, JConsole, Java Flight Recorder</li>
+                </ul>
+
 
                 <h3>Which edition / version should you use?</h3>
                 <p>

@@ -39,7 +39,10 @@ import Operators from "./pages/Notes/CoreJava/Operators";
 import ArraysInJava from "./pages/Notes/Arrays/ArraysInJava";
 import Queue from "./pages/Notes/Collections/Queue";
 import Stack from "./pages/Notes/Collections/Stack";
-
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsAndConditions from "./pages/TermsAndConditions";
 
 export default function App() {
   return (
@@ -57,6 +60,11 @@ export default function App() {
             <Route path="/my-questions" element={<MyQuestions />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/forgot-password" element={<ForgotPassword />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/terms" element={<TermsAndConditions />} />
+
             <Route path="/notes" element={<NotesLayout />}>
               <Route index element={<JavaHistory />} />
 
