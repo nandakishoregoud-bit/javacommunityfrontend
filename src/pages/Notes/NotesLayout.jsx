@@ -7,16 +7,36 @@ export default function NotesLayout() {
     const [sidebarVisible, setSidebarVisible] = useState(false);
 
     return (
-        <div>
-            {/* Sidebar */}
-            <Sidebar toggleSidebar={() => setSidebarVisible(false)} />
+        <div className="notes-layout">
+            {/* Mobile header */}
+            <header className="notes-header">
+                <button
+                    className="menu-toggle"
+                    onClick={() => setSidebarVisible(!sidebarVisible)}
+                >
+                    ☰
+                </button>
+                <h1>Java Notes</h1>
+            </header>
 
-            
+            {/* Sidebar */}
+            <Sidebar
+                isOpen={sidebarVisible}
+                toggleSidebar={() => setSidebarVisible(!sidebarVisible)}
+            />
+
+            {/* Overlay for mobile */}
+            {sidebarVisible && (
+                <div
+                    className="overlay"
+                    onClick={() => setSidebarVisible(false)}
+                />
+            )}
+
             {/* Main content */}
-            <div className={`main-content ${sidebarVisible ? "mobile-overlay" : ""}`}>
-                
+            <main className={`main-content ${sidebarVisible ? "shifted" : ""}`}>
                 <Outlet />
-            </div>
+            </main>
         </div>
     );
 }

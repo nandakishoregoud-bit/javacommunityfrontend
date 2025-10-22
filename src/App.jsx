@@ -49,6 +49,7 @@ export default function App() {
         <main style={{ flexGrow: 1, padding: "2rem", background: "#f3f4f6" }}>
           <Routes>
             <Route path="/" element={<Home />} />
+            
             <Route path="/questions" element={<Questions />} />
             <Route path="/questions/:id" element={<QuestionDetails />} />
             <Route path="/login" element={<Login />} />

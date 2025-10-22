@@ -6,7 +6,6 @@ import patrickNaughton from "../assets/patricknaughton.jpeg";
 import herbSchildt from "../assets/HerbertSchildt.jpeg";
 import "./Home.css";
 
-
 export default function Home() {
     return (
         <div className="home-page">
@@ -53,6 +52,26 @@ export default function Home() {
                     Whether you're preparing for interviews, brushing up on core concepts, or exploring
                     new technologies like Spring Boot or Microservices, JavaConnect provides a space for
                     constant learning and growth.
+                </p>
+            </section>
+
+            {/* Java Learning Resources Section */}
+            <section className="learning-section">
+                <h2>📚 Learn Java Step by Step</h2>
+                <p>
+                    At JavaConnect, we believe in learning by doing. Our tutorials and discussions are structured to
+                    help you progress from fundamentals to advanced topics at your own pace. Here are some of the key areas you can explore:
+                </p>
+                <ul>
+                    <li>☕ <b>Core Java</b> — Understand OOP concepts, collections, and exception handling with practical examples.</li>
+                    <li>🌱 <b>Spring Boot</b> — Learn how to build production-ready applications quickly using modern frameworks.</li>
+                    <li>🧩 <b>Microservices</b> — Dive into scalable system design and distributed architecture with Java.</li>
+                    <li>🧠 <b>Interview Preparation</b> — Explore real-world coding challenges and Java interview questions.</li>
+                    <li>🌍 <b>Community Articles</b> — Read tutorials, guides, and discussions written by experienced Java developers.</li>
+                </ul>
+                <p>
+                    Every topic comes with examples, explanations, and discussions to help you truly understand the “why” behind the code.
+                    We encourage you to participate, ask questions, and share your experience — because that’s what makes our community thrive.
                 </p>
             </section>
 
@@ -153,6 +172,24 @@ export default function Home() {
                     Get Started
                 </Link>
             </section>
+
+            {/* Footer Section */}
+            <footer className="footer1">
+                <div className="footer1-content">
+                    <h3>About JavaConnect</h3>
+                    <p>
+                        JavaConnect is an independent learning and collaboration platform for Java enthusiasts.
+                        Our mission is to make Java education accessible and community-driven. We are not affiliated
+                        with Oracle or the official Java brand.
+                    </p>
+                    <p>
+                        Explore tutorials, share your knowledge, and connect with like-minded developers who are passionate about
+                        Java, Spring Boot, Microservices, and backend engineering.
+                    </p>
+                    <p>📧 Contact us: support@javaconnect.dev</p>
+                    <p>© {new Date().getFullYear()} JavaConnect. All rights reserved.</p>
+                </div>
+            </footer>
         </div>
     );
 }
