@@ -2,6 +2,7 @@ import { useState } from "react";
 import api from "../utils/api";
 import { useNavigate } from "react-router-dom";
 
+
 export default function Login() {
     const [form, setForm] = useState({ email: "", password: "" });
     const [message, setMessage] = useState("");
@@ -21,7 +22,7 @@ export default function Login() {
                 window.dispatchEvent(new Event("userChanged"));
                 navigate("/");
             } else {
-                setMessage("Invalid credentials");
+                setMessage("Invalid credentials",res.data.message);
             }
         } catch (err) {
             setMessage("Login failed. Please check your credentials.");

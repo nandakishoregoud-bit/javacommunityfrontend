@@ -15,15 +15,26 @@ export default function Register() {
     };
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
-        try {
-            const res = await api.post("/api/auth/register", form);
+    e.preventDefault();
+    setMessage(""); // clear old messages
+
+    try {
+        const res = await api.post("/api/auth/register", form);
+
+        if (res.data.success) {
             setMessage(res.data.message || "Registered successfully!");
             setForm({ name: "", email: "", password: "" });
-        } catch (err) {
-            setMessage("Registration failed. Please try again.");
+        } else {
+            setMessage(res.data.message || "Registration failed. Please try again.");
         }
-    };
+    } catch (err) {
+        // If backend sends error response (like status 400)
+        const backendMessage =
+            err.response?.data?.message || "Something went wrong. Please try again.";
+        setMessage(backendMessage);
+    }
+};
+
 
     return (
         <div style={{
