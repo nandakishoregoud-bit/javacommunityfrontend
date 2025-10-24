@@ -2,10 +2,11 @@ import { useState } from "react";
 import api from "../utils/api";
 import { useNavigate } from "react-router-dom";
 
-
 export default function Login() {
     const [form, setForm] = useState({ email: "", password: "" });
     const [message, setMessage] = useState("");
+    const [isError, setIsError] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
     const navigate = useNavigate();
 
     const handleChange = (e) => {
@@ -14,6 +15,9 @@ export default function Login() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setMessage("");
+        setIsError(false);
+
         try {
             const res = await api.post("api/auth/login", form);
             if (res.data.success) {
@@ -22,10 +26,12 @@ export default function Login() {
                 window.dispatchEvent(new Event("userChanged"));
                 navigate("/");
             } else {
-                setMessage("Invalid credentials",res.data.message);
+                setMessage(res.data.message || "Invalid credentials");
+                setIsError(true);
             }
         } catch (err) {
             setMessage("Login failed. Please check your credentials.");
+            setIsError(true);
         }
     };
 
@@ -51,45 +57,28 @@ export default function Login() {
                     value={form.email}
                     onChange={handleChange}
                     required
-                    style={{
-                        width: "100%",
-                        padding: "10px",
-                        marginBottom: "12px",
-                        border: "1px solid #cbd5e1",
-                        borderRadius: "6px",
-                    }}
+                    style={inputStyle}
                 />
-                <input
-                    type="password"
-                    name="password"
-                    placeholder="Password"
-                    value={form.password}
-                    onChange={handleChange}
-                    required
-                    style={{
-                        width: "100%",
-                        padding: "10px",
-                        marginBottom: "16px",
-                        border: "1px solid #cbd5e1",
-                        borderRadius: "6px",
-                    }}
-                />
-                <button
-                    type="submit"
-                    style={{
-                        width: "100%",
-                        background: "#2563eb",
-                        color: "#fff",
-                        padding: "10px",
-                        border: "none",
-                        borderRadius: "6px",
-                        cursor: "pointer",
-                        fontWeight: "600",
-                        transition: "background 0.3s ease",
-                    }}
-                    onMouseOver={(e) => (e.target.style.background = "#1d4ed8")}
-                    onMouseOut={(e) => (e.target.style.background = "#2563eb")}
-                >
+
+                <div style={{ position: "relative" }}>
+                    <input
+                        type={showPassword ? "text" : "password"}
+                        name="password"
+                        placeholder="Password"
+                        value={form.password}
+                        onChange={handleChange}
+                        required
+                        style={{ ...inputStyle, paddingRight: "40px" }}
+                    />
+                    <span
+                        onClick={() => setShowPassword(!showPassword)}
+                        style={eyeIconStyle}
+                    >
+                        {showPassword ? "🙈" : "👁️"}
+                    </span>
+                </div>
+
+                <button type="submit" style={buttonStyle}>
                     Login
                 </button>
             </form>
@@ -99,7 +88,7 @@ export default function Login() {
                     style={{
                         textAlign: "center",
                         marginTop: "12px",
-                        color: message.includes("failed") ? "red" : "green",
+                        color: isError ? "red" : "green",
                         fontWeight: "500",
                     }}
                 >
@@ -113,7 +102,6 @@ export default function Login() {
                 </a>
             </p>
 
-            {/* ✅ Add Privacy Notice */}
             <p
                 style={{
                     fontSize: "0.85rem",
@@ -127,7 +115,7 @@ export default function Login() {
                 <a href="/privacy-policy" style={{ color: "#2563eb", textDecoration: "none" }}>
                     Privacy Policy
                 </a>{" "}
-                {`and `}
+                and{" "}
                 <a href="/terms" style={{ color: "#2563eb", textDecoration: "none" }}>
                     Terms & Conditions
                 </a>
@@ -136,3 +124,32 @@ export default function Login() {
         </div>
     );
 }
+
+const inputStyle = {
+    width: "100%",
+    padding: "10px",
+    marginBottom: "12px",
+    border: "1px solid #cbd5e1",
+    borderRadius: "6px",
+};
+
+const buttonStyle = {
+    width: "100%",
+    background: "#2563eb",
+    color: "#fff",
+    padding: "10px",
+    border: "none",
+    borderRadius: "6px",
+    cursor: "pointer",
+    fontWeight: "600",
+    transition: "background 0.3s ease",
+};
+
+const eyeIconStyle = {
+    position: "absolute",
+    right: "10px",
+    top: "50%",
+    transform: "translateY(-50%)",
+    cursor: "pointer",
+    fontSize: "18px",
+};

@@ -3,13 +3,14 @@ import api from "../utils/api";
 
 export default function Register() {
     const [form, setForm] = useState({
-        name: "",
+        userName: "",
         email: "",
         password: ""
     });
 
     const [message, setMessage] = useState("");
     const [isError, setIsError] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
 
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value });
@@ -20,8 +21,7 @@ export default function Register() {
         setMessage("");
         setIsError(false);
 
-        // 🔹 Basic client-side validation
-        if (!form.name || !form.email || !form.password) {
+        if (!form.userName || !form.email || !form.password) {
             setMessage("All fields are required.");
             setIsError(true);
             return;
@@ -29,11 +29,10 @@ export default function Register() {
 
         try {
             const res = await api.post("/api/auth/register", form);
-
             if (res.data.success) {
                 setMessage(res.data.message || "Registered successfully!");
                 setIsError(false);
-                setForm({ name: "", email: "", password: "" });
+                setForm({ userName: "", email: "", password: "" });
             } else {
                 setMessage(res.data.message || "Registration failed. Please try again.");
                 setIsError(true);
@@ -62,17 +61,11 @@ export default function Register() {
             <form onSubmit={handleSubmit}>
                 <input
                     type="text"
-                    name="name"
+                    name="userName"
                     placeholder="Full Name"
-                    value={form.name}
+                    value={form.userName}
                     onChange={handleChange}
-                    style={{
-                        width: "100%",
-                        padding: "10px",
-                        marginBottom: "10px",
-                        border: "1px solid #ccc",
-                        borderRadius: "5px"
-                    }}
+                    style={inputStyle}
                 />
                 <input
                     type="email"
@@ -80,42 +73,27 @@ export default function Register() {
                     placeholder="Email"
                     value={form.email}
                     onChange={handleChange}
-                    style={{
-                        width: "100%",
-                        padding: "10px",
-                        marginBottom: "10px",
-                        border: "1px solid #ccc",
-                        borderRadius: "5px"
-                    }}
-                />
-                <input
-                    type="password"
-                    name="password"
-                    placeholder="Password"
-                    value={form.password}
-                    onChange={handleChange}
-                    style={{
-                        width: "100%",
-                        padding: "10px",
-                        marginBottom: "10px",
-                        border: "1px solid #ccc",
-                        borderRadius: "5px"
-                    }}
+                    style={inputStyle}
                 />
 
-                <button
-                    type="submit"
-                    style={{
-                        width: "100%",
-                        background: "#007bff",
-                        color: "#fff",
-                        padding: "10px",
-                        border: "none",
-                        borderRadius: "5px",
-                        cursor: "pointer",
-                        fontWeight: "bold"
-                    }}
-                >
+                <div style={{ position: "relative" }}>
+                    <input
+                        type={showPassword ? "text" : "password"}
+                        name="password"
+                        placeholder="Password"
+                        value={form.password}
+                        onChange={handleChange}
+                        style={{ ...inputStyle, paddingRight: "40px" }}
+                    />
+                    <span
+                        onClick={() => setShowPassword(!showPassword)}
+                        style={eyeIconStyle}
+                    >
+                        {showPassword ? "🙈" : "👁️"}
+                    </span>
+                </div>
+
+                <button type="submit" style={buttonStyle}>
                     Register
                 </button>
             </form>
@@ -135,3 +113,31 @@ export default function Register() {
         </div>
     );
 }
+
+const inputStyle = {
+    width: "100%",
+    padding: "10px",
+    marginBottom: "10px",
+    border: "1px solid #ccc",
+    borderRadius: "5px",
+};
+
+const buttonStyle = {
+    width: "100%",
+    background: "#007bff",
+    color: "#fff",
+    padding: "10px",
+    border: "none",
+    borderRadius: "5px",
+    cursor: "pointer",
+    fontWeight: "bold",
+};
+
+const eyeIconStyle = {
+    position: "absolute",
+    right: "10px",
+    top: "50%",
+    transform: "translateY(-50%)",
+    cursor: "pointer",
+    fontSize: "18px",
+};
