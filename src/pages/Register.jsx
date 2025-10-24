@@ -9,43 +9,56 @@ export default function Register() {
     });
 
     const [message, setMessage] = useState("");
+    const [isError, setIsError] = useState(false);
 
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value });
     };
 
     const handleSubmit = async (e) => {
-    e.preventDefault();
-    setMessage(""); // clear old messages
+        e.preventDefault();
+        setMessage("");
+        setIsError(false);
 
-    try {
-        const res = await api.post("/api/auth/register", form);
-
-        if (res.data.success) {
-            setMessage(res.data.message || "Registered successfully!");
-            setForm({ name: "", email: "", password: "" });
-        } else {
-            setMessage(res.data.message || "Registration failed. Please try again.");
+        // 🔹 Basic client-side validation
+        if (!form.name || !form.email || !form.password) {
+            setMessage("All fields are required.");
+            setIsError(true);
+            return;
         }
-    } catch (err) {
-        // If backend sends error response (like status 400)
-        const backendMessage =
-            err.response?.data?.message || "Something went wrong. Please try again.";
-        setMessage(backendMessage);
-    }
-};
 
+        try {
+            const res = await api.post("/api/auth/register", form);
+
+            if (res.data.success) {
+                setMessage(res.data.message || "Registered successfully!");
+                setIsError(false);
+                setForm({ name: "", email: "", password: "" });
+            } else {
+                setMessage(res.data.message || "Registration failed. Please try again.");
+                setIsError(true);
+            }
+        } catch (err) {
+            const backendMessage =
+                err.response?.data?.message || "Something went wrong. Please try again.";
+            setMessage(backendMessage);
+            setIsError(true);
+        }
+    };
 
     return (
-        <div style={{
-            maxWidth: "400px",
-            margin: "50px auto",
-            padding: "20px",
-            background: "#fff",
-            borderRadius: "10px",
-            boxShadow: "0 0 10px rgba(0,0,0,0.1)"
-        }}>
+        <div
+            style={{
+                maxWidth: "400px",
+                margin: "50px auto",
+                padding: "20px",
+                background: "#fff",
+                borderRadius: "10px",
+                boxShadow: "0 0 10px rgba(0,0,0,0.1)"
+            }}
+        >
             <h2 style={{ textAlign: "center", marginBottom: "20px" }}>Register</h2>
+
             <form onSubmit={handleSubmit}>
                 <input
                     type="text"
@@ -53,7 +66,13 @@ export default function Register() {
                     placeholder="Full Name"
                     value={form.name}
                     onChange={handleChange}
-                    style={{ width: "100%", padding: "10px", marginBottom: "10px" }}
+                    style={{
+                        width: "100%",
+                        padding: "10px",
+                        marginBottom: "10px",
+                        border: "1px solid #ccc",
+                        borderRadius: "5px"
+                    }}
                 />
                 <input
                     type="email"
@@ -61,7 +80,13 @@ export default function Register() {
                     placeholder="Email"
                     value={form.email}
                     onChange={handleChange}
-                    style={{ width: "100%", padding: "10px", marginBottom: "10px" }}
+                    style={{
+                        width: "100%",
+                        padding: "10px",
+                        marginBottom: "10px",
+                        border: "1px solid #ccc",
+                        borderRadius: "5px"
+                    }}
                 />
                 <input
                     type="password"
@@ -69,8 +94,15 @@ export default function Register() {
                     placeholder="Password"
                     value={form.password}
                     onChange={handleChange}
-                    style={{ width: "100%", padding: "10px", marginBottom: "10px" }}
+                    style={{
+                        width: "100%",
+                        padding: "10px",
+                        marginBottom: "10px",
+                        border: "1px solid #ccc",
+                        borderRadius: "5px"
+                    }}
                 />
+
                 <button
                     type="submit"
                     style={{
@@ -80,14 +112,23 @@ export default function Register() {
                         padding: "10px",
                         border: "none",
                         borderRadius: "5px",
-                        cursor: "pointer"
+                        cursor: "pointer",
+                        fontWeight: "bold"
                     }}
                 >
                     Register
                 </button>
             </form>
+
             {message && (
-                <p style={{ textAlign: "center", marginTop: "10px", color: "green" }}>
+                <p
+                    style={{
+                        textAlign: "center",
+                        marginTop: "15px",
+                        color: isError ? "red" : "green",
+                        fontWeight: "bold"
+                    }}
+                >
                     {message}
                 </p>
             )}
