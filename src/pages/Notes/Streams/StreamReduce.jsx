@@ -1,113 +1,114 @@
 import { useState } from "react";
 
-export default function StreamFilter() {
+export default function StreamReduce() {
     const [showAnswers, setShowAnswers] = useState(false);
     const [selected, setSelected] = useState(Array(4).fill(null));
 
     const quiz = [
         {
-            q: "What does the filter() method do in Java Streams?",
+            q: "What does the reduce() method do in Java Streams?",
             options: [
                 "Transforms each element",
-                "Selects elements based on a condition",
-                "Reduces elements to a single value",
+                "Filters elements based on a condition",
+                "Combines stream elements into a single result",
                 "Sorts the elements"
             ],
-            answer: 1,
+            answer: 2,
         },
         {
-            q: "Which of these will select only even numbers from a list?",
+            q: "Which of these correctly sums all elements in a stream?",
             options: [
-                "numbers.stream().map(n -> n*2)",
-                "numbers.stream().filter(n -> n % 2 == 0)",
-                "numbers.stream().reduce((a,b) -> a+b)",
-                "numbers.stream().forEach(System.out::println)"
+                "numbers.stream().filter(n -> n > 0)",
+                "numbers.stream().map(n -> n * 2)",
+                "numbers.stream().reduce(0, (a,b) -> a + b)",
+                "numbers.stream().sorted()"
             ],
-            answer: 1,
+            answer: 2,
         },
         {
-            q: "Filter method returns what type of stream?",
+            q: "What type of value does reduce() return?",
             options: [
-                "A new stream with selected elements",
-                "A single value",
-                "An array",
+                "A new Stream",
+                "A single value (like int, double, or object)",
+                "A collection",
                 "Nothing"
             ],
-            answer: 0,
+            answer: 1,
         },
         {
-            q: "Can filter() be combined with other stream operations?",
-            options: ["Yes", "No", "Only with map()", "Only with reduce()"],
+            q: "Can reduce() be used for non-numeric data (like Strings)?",
+            options: ["Yes", "No", "Only for integers", "Only with map()"],
             answer: 0,
         },
     ];
 
     return (
         <div style={{ fontFamily: "Arial", lineHeight: 2, padding: "1rem", maxWidth: 800, margin: "auto" }}>
-            <h1>🔍 Stream <code>filter()</code> in Java</h1>
+            <h1>🧮 Stream <code>reduce()</code> in Java</h1>
             <p>
-                The <b>filter()</b> method in Java Streams allows you to select elements from a collection
-                based on a given <b>boolean condition</b>.
-                It helps create a subset of elements that meet specific criteria — for example, getting only
-                even numbers, names starting with “A”, or objects with certain properties.
+                The <b>reduce()</b> method in Java Streams is used to <b>combine</b> all elements of a stream into a single result.
+                It’s often used for operations like summing numbers, finding maximum values, concatenating strings, or combining objects.
             </p>
 
-            <h2>🔹 How It Works</h2>
+            <h2>🔹 Key Points</h2>
             <ul>
-                <li><code>filter()</code> takes a <b>Predicate</b> (a condition returning true or false).</li>
-                <li>It keeps only the elements that satisfy this condition.</li>
-                <li>It returns a <b>new Stream</b> containing only those selected elements.</li>
-                <li>Does not modify the original collection.</li>
+                <li><code>reduce()</code> takes a <b>starting value</b> and a <b>BinaryOperator</b> (a function combining two elements).</li>
+                <li>It processes elements one by one and accumulates the result.</li>
+                <li>It returns a <b>single value</b> — not a stream.</li>
+                <li>Common use cases: sum, product, max/min, concatenation, or combining objects.</li>
             </ul>
 
-            <h2>🔹 Example 1: Filtering Even Numbers</h2>
+            <h2>🔹 Example 1: Sum of Numbers</h2>
             <pre style={{ background: "#eee", padding: "10px", borderRadius: "5px" }}>
                 <code>{`import java.util.*;
 import java.util.stream.*;
 
 public class Main {
     public static void main(String[] args) {
-        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6);
+        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
 
-        // Filter even numbers
-        List<Integer> evenNumbers = numbers.stream()
-            .filter(n -> n % 2 == 0)
-            .toList();
+        // Sum using reduce
+        int sum = numbers.stream()
+            .reduce(0, (a, b) -> a + b);
 
-        System.out.println("Even Numbers: " + evenNumbers);
+        System.out.println("Sum: " + sum);
     }
 }`}</code>
             </pre>
 
-            <h2>🔹 Example 2: Filtering Names Starting with 'A'</h2>
+            <h2>🔹 Example 2: Finding the Maximum Number</h2>
             <pre style={{ background: "#eee", padding: "10px", borderRadius: "5px" }}>
-                <code>{`List<String> names = Arrays.asList("Alice", "Bob", "Ankit", "David");
+                <code>{`List<Integer> numbers = Arrays.asList(10, 20, 5, 30);
 
-List<String> filteredNames = names.stream()
-    .filter(n -> n.startsWith("A"))
-    .toList();
+int max = numbers.stream()
+    .reduce(Integer.MIN_VALUE, (a, b) -> a > b ? a : b);
 
-System.out.println(filteredNames); // Output: [Alice, Ankit]`}</code>
+System.out.println("Max: " + max); // Output: 30`}</code>
             </pre>
 
-            <h2>🔹 Combining filter() with Other Stream Operations</h2>
-            <p>
-                The <b>filter()</b> method can be chained with other stream operations like
-                <code>map()</code>, <code>sorted()</code>, and <code>reduce()</code> to build
-                powerful and readable data pipelines.
-            </p>
+            <h2>🔹 Example 3: Concatenating Strings</h2>
             <pre style={{ background: "#eee", padding: "10px", borderRadius: "5px" }}>
-                <code>{`List<Integer> result = Arrays.asList(1, 2, 3, 4, 5, 6).stream()
-    .filter(n -> n % 2 == 1)    // keep only odd numbers
-    .map(n -> n * 2)            // double them
-    .sorted()                   // sort ascending
-    .toList();
+                <code>{`List<String> words = Arrays.asList("Java", "is", "awesome");
 
-System.out.println(result); // Output: [2, 6, 10]`}</code>
+String sentence = words.stream()
+    .reduce("", (a, b) -> a + " " + b);
+
+System.out.println(sentence.trim()); // Output: Java is awesome`}</code>
             </pre>
 
-            <h2>💡 Real-World Example: Filtering Objects</h2>
-            <p>You can use <code>filter()</code> with objects in collections as well:</p>
+            <h2>🔹 Example 4: Using reduce() with map()</h2>
+            <p>We can combine <code>map()</code> and <code>reduce()</code> to create functional pipelines:</p>
+            <pre style={{ background: "#eee", padding: "10px", borderRadius: "5px" }}>
+                <code>{`List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
+
+int squareSum = numbers.stream()
+    .map(n -> n * n)          // square each element
+    .reduce(0, Integer::sum); // sum them
+
+System.out.println("Sum of squares: " + squareSum);`}</code>
+            </pre>
+
+            <h2>💡 Real-World Example: Total Salary Calculation</h2>
             <pre style={{ background: "#eee", padding: "10px", borderRadius: "5px" }}>
                 <code>{`class Employee {
     String name;
@@ -118,49 +119,46 @@ System.out.println(result); // Output: [2, 6, 10]`}</code>
     }
 }
 
-public class FilterExample {
+public class Example {
     public static void main(String[] args) {
         List<Employee> employees = Arrays.asList(
             new Employee("Alice", 90000),
-            new Employee("Bob", 50000),
+            new Employee("Bob", 70000),
             new Employee("Charlie", 120000)
         );
 
-        List<Employee> highEarners = employees.stream()
-            .filter(e -> e.salary > 80000)
-            .toList();
+        double totalSalary = employees.stream()
+            .map(e -> e.salary)
+            .reduce(0.0, Double::sum);
 
-        highEarners.forEach(e -> System.out.println(e.name));
-        // Output: Alice, Charlie
+        System.out.println("Total Salary: " + totalSalary);
     }
 }`}</code>
             </pre>
 
             <h2>✅ Best Practices</h2>
             <ul>
-                <li>Use <code>filter()</code> to simplify conditional logic on collections.</li>
-                <li>Prefer <code>filter()</code> over loops for readability and maintainability.</li>
-                <li>Don’t modify external variables inside filter — keep it <b>pure</b> and stateless.</li>
-                <li>Combine with <code>map()</code> and <code>collect()</code> for complex data transformations.</li>
+                <li>Use <code>reduce()</code> for aggregation — summing, combining, or merging elements.</li>
+                <li>Prefer <code>Integer::sum</code> or <code>Double::sum</code> for readability.</li>
+                <li>When working with objects, use <code>map()</code> first to extract numeric fields.</li>
+                <li>Keep reduce operations <b>stateless</b> — no modifying external variables.</li>
             </ul>
 
             <h2>🧩 Practice Example</h2>
             <pre style={{ background: "#eee", padding: "10px", borderRadius: "5px" }}>
                 <code>{`public class Practice {
     public static void main(String[] args) {
-        List<Integer> nums = Arrays.asList(3, 7, 2, 8, 5);
+        List<Integer> nums = Arrays.asList(2, 4, 6, 8, 10);
 
-        List<Integer> filtered = nums.stream()
-            .filter(n -> n > 4) // keep numbers greater than 4
-            .map(n -> n * 10)
-            .toList();
+        int product = nums.stream()
+            .reduce(1, (a, b) -> a * b); // multiply all numbers
 
-        System.out.println(filtered); // Output: [70, 80, 50]
+        System.out.println("Product: " + product); // Output: 3840
     }
 }`}</code>
             </pre>
 
-            <h2>📝 Test Yourself: Stream Filter Quiz</h2>
+            <h2>📝 Test Yourself: Stream Reduce Quiz</h2>
             <form
                 onSubmit={(e) => {
                     e.preventDefault();
@@ -219,10 +217,9 @@ public class FilterExample {
             )}
 
             <p style={{ background: "#e0f2fe", padding: "1rem", borderRadius: "8px" }}>
-                💡 <b>Tip:</b> Use <code>filter()</code> when you need to extract specific elements that satisfy
-                a condition. Combine it with <code>map()</code> for transformation,
-                <code>sorted()</code> for ordering, or <code>reduce()</code> for aggregation to build
-                powerful data-processing pipelines.
+                💡 <b>Tip:</b> Use <code>reduce()</code> when you need to combine stream elements into a single result.
+                Combine it with <code>map()</code> for more powerful pipelines — for example,
+                mapping employee salaries and then reducing them to a total.
             </p>
         </div>
     );

@@ -43,6 +43,33 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsAndConditions from "./pages/TermsAndConditions";
+import StreamReduce from "./pages/Notes/Streams/StreamReduce";
+import StreamSorted from "./pages/Notes/Streams/StreamSorted";
+import StreamCollect from "./pages/Notes/Streams/StreamCollect";
+import StreamAdvancedOperations from "./pages/Notes/Streams/StreamAdvancedOperations";
+import StreamSummary from "./pages/Notes/Streams/StreamSummary";
+import JdbcIntroduction from "./pages/Notes/Jdbc/JdbcIntroduction";
+import JdbcConnectionSetup from "./pages/Notes/Jdbc/JdbcConnectionSetup";
+import JdbcDriverTypes from "./pages/Notes/Jdbc/JdbcDriverTypes";
+import JdbcSqlBasics from "./pages/Notes/Jdbc/JdbcSqlBasics";
+import JdbcStatements from "./pages/Notes/Jdbc/JdbcStatements";
+import JdbcExecuteMethods from "./pages/Notes/Jdbc/JdbcExecuteMethods";
+import JdbcHandlingResults from "./pages/Notes/Jdbc/JdbcHandlingResults";
+import JdbcTransactions from "./pages/Notes/Jdbc/JdbcTransactions";
+import JdbcBatchProcessing from "./pages/Notes/Jdbc/JdbcBatchProcessing";
+import JdbcResultSet from "./pages/Notes/Jdbc/JdbcResultSet";
+import JdbcDatabaseMetaData from "./pages/Notes/Jdbc/JdbcDatabaseMetaData";
+import JdbcScrollableUpdatableResultSet from "./pages/Notes/Jdbc/JdbcScrollableUpdatableResultSet";
+import JdbcHandlingLargeData from "./pages/Notes/Jdbc/JdbcHandlingLargeData";
+import JdbcStoredProcedures from "./pages/Notes/Jdbc/JdbcStoredProcedures";
+import JdbcProjectOverview from "./pages/Notes/Jdbc/Jdbcproject/JdbcProjectOverview";
+import JdbcProjectRequirements from "./pages/Notes/Jdbc/Jdbcproject/JdbcProjectRequirements";
+import JdbcProjectSetup from "./pages/Notes/Jdbc/Jdbcproject/JdbcProjectSetup";
+import JdbcProjectModelAndDAO from "./pages/Notes/Jdbc/Jdbcproject/JdbcProjectModelAndDAO";
+import JdbcProjectMenuInterface from "./pages/Notes/Jdbc/Jdbcproject/JdbcProjectMenuInterface";
+import JdbcProjectExceptionHandling from "./pages/Notes/Jdbc/Jdbcproject/JdbcProjectExceptionHandling";
+import JdbcProjectPackagingAndRunning from "./pages/Notes/Jdbc/Jdbcproject/JdbcProjectPackagingAndRunning";
+import JdbcProjectSummary from "./pages/Notes/Jdbc/Jdbcproject/JdbcProjectSummary";
 
 export default function App() {
   return (
@@ -65,7 +92,7 @@ export default function App() {
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/terms" element={<TermsAndConditions />} />
 
-            <Route path="/notes" element={<NotesLayout />}>
+            <Route path="/notes" element={<NotesLayout topic="javaTopics" />}>
               <Route index element={<JavaHistory />} />
 
               <Route path="java/installjava" element={< InstallJava />} />
@@ -107,7 +134,43 @@ export default function App() {
               <Route path="streams/stream-basics" element={<StreamBasics />} />
               <Route path="streams/stream-filter" element={<StreamFilter />} />
               <Route path="streams/stream-map" element={<StreamMap />} />
+              <Route path="streams/stream-reduce" element={<StreamReduce />} />
+              <Route path="streams/stream-sorted" element={<StreamSorted />} />
+              <Route path="streams/stream-collect" element={<StreamCollect />} />
+              <Route path="streams/stream-advanced-operations" element={<StreamAdvancedOperations />} />
+              <Route path="streams/stream-summary" element={<StreamSummary />} />
+
+              
             </Route>
+            <Route path="/notes/jdbc/*" element={<NotesLayout topic="jdbc" />}>
+              <Route index element={<JavaHistory />} />
+              <Route path="intro" element={< JdbcIntroduction />} />
+              <Route path="connection" element={< JdbcConnectionSetup />} />
+              <Route path="drivers" element={< JdbcDriverTypes />} />
+              <Route path="sql-basics" element={< JdbcSqlBasics />} />
+              <Route path="statement" element={< JdbcStatements />} />
+              <Route path="execute-methods" element={< JdbcExecuteMethods />} />
+              <Route path="results" element={< JdbcHandlingResults />} />
+              <Route path="transactions" element={< JdbcTransactions />} />
+              <Route path="batch" element={<JdbcBatchProcessing />} />
+              <Route path="resultset" element={< JdbcResultSet />} />
+              <Route path="databasemetadata" element={< JdbcDatabaseMetaData />} />
+              <Route path="scrollable-updatable-resultset" element={< JdbcScrollableUpdatableResultSet />} />
+              <Route path="handling-large-data" element={< JdbcHandlingLargeData />} />
+              <Route path="stored-procedures" element={< JdbcStoredProcedures />} />
+              <Route path="project-overview" element={<JdbcProjectOverview />} />
+              <Route path="project-requriements" element={<JdbcProjectRequirements />} />
+              <Route path="project-setup" element={< JdbcProjectSetup />} />
+              <Route path="project-model-dao" element={< JdbcProjectModelAndDAO />} />
+              <Route path="project-menu-interface" element={< JdbcProjectMenuInterface />} />
+              <Route path="project-exception-handling" element={< JdbcProjectExceptionHandling />} />
+              <Route path="project-packaging-running" element={< JdbcProjectPackagingAndRunning />} />
+              <Route path="project-summary" element={< JdbcProjectSummary />} />
+            </Route>
+            
+            
+            <Route path="/notes/advanced-java/*" element={<NotesLayout topic="advanced-java" />} />
+            <Route path="/notes/frameworks/*" element={<NotesLayout topic="frameworks" />} />
           </Routes>
         </main>
         <Footer />

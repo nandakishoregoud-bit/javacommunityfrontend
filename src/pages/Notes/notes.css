@@ -58,7 +58,8 @@
 }
 
 .subtopics.open {
-    max-height: 400px;
+    max-height: 600px;
+    overflow-y: auto;
 }
 
 .subtopics li a {

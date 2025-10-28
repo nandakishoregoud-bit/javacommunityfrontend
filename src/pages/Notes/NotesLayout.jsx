@@ -3,12 +3,11 @@ import { useState } from "react";
 import Sidebar from "./Sidebar";
 import "./notes.css";
 
-export default function NotesLayout() {
+export default function NotesLayout({ topic }) {
     const [sidebarVisible, setSidebarVisible] = useState(false);
 
     return (
         <div className="notes-layout">
-            {/* Mobile header */}
             <header className="notes-header">
                 <button
                     className="menu-toggle"
@@ -16,16 +15,15 @@ export default function NotesLayout() {
                 >
                     ☰
                 </button>
-                <h1>Java Notes</h1>
+                <h1>{topic.replace("-", " ").toUpperCase()}</h1>
             </header>
 
-            {/* Sidebar */}
             <Sidebar
+                topic={topic}
                 isOpen={sidebarVisible}
                 toggleSidebar={() => setSidebarVisible(!sidebarVisible)}
             />
 
-            {/* Overlay for mobile */}
             {sidebarVisible && (
                 <div
                     className="overlay"
@@ -33,7 +31,6 @@ export default function NotesLayout() {
                 />
             )}
 
-            {/* Main content */}
             <main className={`main-content ${sidebarVisible ? "shifted" : ""}`}>
                 <Outlet />
             </main>

@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import javalogo from "/javalogo.png";
+import "./Navbar.css";
 
 export default function Navbar() {
     const [user, setUser] = useState(null);
@@ -32,10 +33,7 @@ export default function Navbar() {
         <nav className="navbar">
             <div className="nav-container">
                 <div className="logo">
-                    <img
-                        src={javalogo}
-                        alt="Java Logo"
-                    />
+                    <img src={javalogo} alt="Java Logo" />
                     <Link to="/">JavaConnect</Link>
                 </div>
 
@@ -52,7 +50,16 @@ export default function Navbar() {
                     <Link to="/questions" onClick={() => setMenuOpen(false)}>Questions</Link>
                     {user && <Link to="/my-questions" onClick={() => setMenuOpen(false)}>My Questions</Link>}
                     {user && <Link to="/profile" onClick={() => setMenuOpen(false)}>Profile</Link>}
-                    <Link to="/notes" onClick={() => setMenuOpen(false)}>Notes</Link>
+
+                    {/* Notes Dropdown */}
+                    <div className="nav-item dropdown">
+                        <span className="nav-link">Notes ▼</span>
+                        <div className="dropdown-menu">
+                            <Link to="/notes" className="dropdown-item">Basic Java</Link>
+                            <Link to="/notes/jdbc" className="dropdown-item">JDBC</Link>
+                        </div>
+                    </div>
+
                     {!user ? (
                         <>
                             <Link to="/login" onClick={() => setMenuOpen(false)}>Login</Link>
@@ -63,7 +70,6 @@ export default function Navbar() {
                             Logout
                         </button>
                     )}
-
                 </div>
             </div>
         </nav>
