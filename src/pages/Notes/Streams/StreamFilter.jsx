@@ -43,7 +43,7 @@ export default function StreamFilter() {
     ];
 
     return (
-        <div style={{ fontFamily: "Arial", lineHeight: 2, padding: "1rem", maxWidth: 800, margin: "auto" }}>
+        <div style={{ fontFamily: "Arial", lineHeight: 2, padding: "1.5rem", maxWidth: 900, margin: "auto" }}>
             <h1>🔍 Stream <code>filter()</code> in Java</h1>
             <p>
                 The <b>filter()</b> method in Java Streams allows you to select elements from a collection

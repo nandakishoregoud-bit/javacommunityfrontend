@@ -38,7 +38,7 @@ export default function StreamSorted() {
     ];
 
     return (
-        <div style={{ fontFamily: "Arial", lineHeight: 2, padding: "1rem", maxWidth: 800, margin: "auto" }}>
+        <div style={{ fontFamily: "Arial", lineHeight: 2, padding: "1.5rem", maxWidth: 900, margin: "auto" }}>
             <h1>📚 Stream <code>sorted()</code> in Java</h1>
             <p>
                 The <b>sorted()</b> method in Java Streams is used to arrange elements in a specific order.

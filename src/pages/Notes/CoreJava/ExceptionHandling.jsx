@@ -38,7 +38,8 @@ export default function ExceptionHandling() {
     ];
 
     return (
-        <div style={{ fontFamily: "Arial", lineHeight: 2, padding: "1rem", maxWidth: 800, margin: "auto" }}>
+        <div style={{ fontFamily: "Arial", lineHeight: 2, padding: "1.5rem", maxWidth: 900, margin: "auto" }}>
+            
             <h1>🚨 Exception Handling in Java</h1>
             <p>
                 In Java, <b>exceptions</b> are unexpected events or errors that interrupt the normal flow of a program.

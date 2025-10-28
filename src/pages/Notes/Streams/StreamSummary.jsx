@@ -43,7 +43,7 @@ export default function StreamSummary() {
     ];
 
     return (
-        <div style={{ fontFamily: "Arial", lineHeight: 2, padding: "1rem", maxWidth: 800, margin: "auto" }}>
+        <div style={{ fontFamily: "Arial", lineHeight: 2, padding: "1.5rem", maxWidth: 900, margin: "auto" }}>
             <h1>🚀 Java Streams – Complete Summary & Final Practice</h1>
             <p>
                 Congratulations! 🎉 You’ve now explored all major Stream operations in Java:

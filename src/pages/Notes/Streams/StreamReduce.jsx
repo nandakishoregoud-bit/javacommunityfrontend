@@ -43,7 +43,7 @@ export default function StreamReduce() {
     ];
 
     return (
-        <div style={{ fontFamily: "Arial", lineHeight: 2, padding: "1rem", maxWidth: 800, margin: "auto" }}>
+        <div style={{ fontFamily: "Arial", lineHeight: 2, padding: "1.5rem", maxWidth: 900, margin: "auto" }}>
             <h1>🧮 Stream <code>reduce()</code> in Java</h1>
             <p>
                 The <b>reduce()</b> method in Java Streams is used to <b>combine</b> all elements of a stream into a single result.

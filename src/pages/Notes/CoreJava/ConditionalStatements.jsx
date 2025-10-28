@@ -39,7 +39,8 @@ export default function ConditionalStatements() {
     ];
 
     return (
-        <div style={{ fontFamily: 'Arial', lineHeight: 2, padding: '1rem', maxWidth: 800, margin: 'auto' }}>
+        <div style={{fontFamily: "Arial", lineHeight: 2, padding: "1.5rem", maxWidth: 900, margin: "auto"
+}} >
             <h1>Conditional Statements in Java</h1>
             <p>
                 Conditional statements allow your program to make decisions and execute specific blocks

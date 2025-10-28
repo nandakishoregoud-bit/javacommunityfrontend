@@ -1,34 +1,22 @@
 import React from "react";
+import "./JdbcGlobal.css";
 
 export default function JdbcProjectModelAndDAO() {
     return (
-        <div
-            style={{
-                fontFamily: "Arial",
-                lineHeight: 1.8,
-                padding: "1rem",
-                maxWidth: 900,
-                margin: "auto",
-            }}
-        >
+        <div className="jdbc-container">
             <h1>🧩 Model & DAO Layer — Student Management System</h1>
 
             <p>
-                In this section, we’ll create the core components of our project:
-                the <b>Student model</b> and the <b>StudentDAO</b> class.
-                These will define our student structure and how we interact with the
-                database.
+                Let’s get to the backbone of our JDBC project 💪
+                In this section, we’ll build the core of our system — the{" "}
+                <b>Student model</b> and the <b>StudentDAO</b> class.
+                These two together define how your application stores and manages data in the database.
             </p>
 
             <h2>🏗 Step 1: Create the Student Table in Database</h2>
-            <pre
-                style={{
-                    background: "#f5f5f5",
-                    padding: "10px",
-                    borderRadius: "8px",
-                }}
-            >
-                {`CREATE DATABASE studentdb;
+            <p>Start by setting up your database in MySQL:</p>
+
+            <pre className="code-block">{`CREATE DATABASE studentdb;
 USE studentdb;
 
 CREATE TABLE students (
@@ -37,24 +25,19 @@ CREATE TABLE students (
     age INT,
     course VARCHAR(50),
     email VARCHAR(100)
-);`}
-            </pre>
+);`}</pre>
 
             <p>
-                This table will store all the student information that we manage in our
-                system.
+                This table will store all student details like <b>name</b>, <b>age</b>, <b>course</b>, and <b>email</b>.
             </p>
 
-            <h2>📘 Step 2: Create the Model Class — Student.java</h2>
-            <pre
-                style={{
-                    background: "#eef",
-                    padding: "10px",
-                    borderRadius: "8px",
-                    marginBottom: "1rem",
-                }}
-            >
-                {`package model;
+            <h2>📘 Step 2: Create the Model Class — <code>Student.java</code></h2>
+            <p>
+                This class represents the structure of a student record — also known as a{" "}
+                <b>POJO (Plain Old Java Object)</b>.
+            </p>
+
+            <pre className="log-block">{`package model;
 
 public class Student {
     private int id;
@@ -93,28 +76,16 @@ public class Student {
     public String toString() {
         return id + " | " + name + " | " + age + " | " + course + " | " + email;
     }
-}`}
-            </pre>
+}`}</pre>
 
+            <h2>💾 Step 3: Create the DAO Class — <code>StudentDAO.java</code></h2>
             <p>
-                This is a simple <b>POJO (Plain Old Java Object)</b> class that represents
-                a student record.
+                The <b>DAO (Data Access Object)</b> is where all the database operations live.
+                It’s responsible for inserting, updating, reading, and deleting records — cleanly separating
+                business logic from database logic.
             </p>
 
-            <h2>💾 Step 3: Create the DAO Class — StudentDAO.java</h2>
-            <p>
-                The DAO (Data Access Object) handles all database operations like inserting,
-                reading, updating, and deleting records.
-            </p>
-
-            <pre
-                style={{
-                    background: "#f5f5f5",
-                    padding: "10px",
-                    borderRadius: "8px",
-                }}
-            >
-                {`package dao;
+            <pre className="code-block">{`package dao;
 
 import java.sql.*;
 import java.util.*;
@@ -200,20 +171,12 @@ public class StudentDAO {
             e.printStackTrace();
         }
     }
-}`}
-            </pre>
+}`}</pre>
 
             <h2>🧪 Step 4: Test the DAO Methods</h2>
-            <p>Let’s test our DAO using a simple main method:</p>
+            <p>Let’s verify our DAO works perfectly with a simple test:</p>
 
-            <pre
-                style={{
-                    background: "#eef",
-                    padding: "10px",
-                    borderRadius: "8px",
-                }}
-            >
-                {`import dao.StudentDAO;
+            <pre className="highlight-block">{`import dao.StudentDAO;
 import model.Student;
 
 public class Main {
@@ -227,38 +190,23 @@ public class Main {
         // Display all students
         dao.getAllStudents().forEach(System.out::println);
     }
-}`}
-            </pre>
+}`}</pre>
 
             <h3>✅ Output:</h3>
-            <pre
-                style={{
-                    background: "#e0f2fe",
-                    padding: "10px",
-                    borderRadius: "8px",
-                }}
-            >
-                {`✅ Student added successfully!
-1 | Kishore | 22 | Java | kishore@gmail.com`}
-            </pre>
+            <pre className="log-block">{`✅ Student added successfully!
+1 | Kishore | 22 | Java | kishore@gmail.com`}</pre>
 
             <h2>🧠 What You Learned</h2>
             <ul>
-                <li>How to create a <b>Student model</b> (POJO)</li>
+                <li>How to build a <b>Student model</b> (POJO)</li>
                 <li>How to perform <b>CRUD operations</b> using JDBC</li>
-                <li>How to organize code using the <b>DAO pattern</b></li>
+                <li>How to use the <b>DAO design pattern</b> for clean structure</li>
             </ul>
 
-            <div
-                style={{
-                    background: "#fef9c3",
-                    padding: "1rem",
-                    borderRadius: "8px",
-                    marginTop: "1.5rem",
-                }}
-            >
-                💡 <b>Next Step:</b> We’ll now add a <b>menu-driven console interface </b>
-                so users can interact with the system easily (like adding, viewing, updating, and deleting students).
+            <div className="next-step">
+                💡 <b>Next Step:</b> It’s time to bring this to life!
+                Let’s build a <b>menu-driven console interface</b> so users can easily
+                add, view, update, and delete students in real-time.
             </div>
         </div>
     );

@@ -1,16 +1,9 @@
 import React from "react";
+import "./JdbcGlobal.css"; // ✅ Reuse the global JDBC styles
 
 export default function JdbcProjectSetup() {
     return (
-        <div
-            style={{
-                fontFamily: "Arial",
-                lineHeight: 1.8,
-                padding: "1rem",
-                maxWidth: 900,
-                margin: "auto",
-            }}
-        >
+        <div className="jdbc-container">
             <h1>⚙️ JDBC Project Setup — Student Management System</h1>
 
             <p>
@@ -26,14 +19,7 @@ export default function JdbcProjectSetup() {
                 Inside it, use the following structure:
             </p>
 
-            <pre
-                style={{
-                    background: "#f5f5f5",
-                    padding: "10px",
-                    borderRadius: "8px",
-                    marginBottom: "1rem",
-                }}
-            >
+            <pre className="code-block">
                 {`StudentManagementSystem/
 │
 ├── lib/
@@ -86,14 +72,7 @@ export default function JdbcProjectSetup() {
                 handle all database connections:
             </p>
 
-            <pre
-                style={{
-                    background: "#eef",
-                    padding: "10px",
-                    borderRadius: "8px",
-                    marginBottom: "1rem",
-                }}
-            >
+            <pre className="code-block blue-block">
                 {`package util;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -132,14 +111,7 @@ public class DBConnection {
                 Create a test class <b>Main.java</b> inside the <code>src/</code> folder:
             </p>
 
-            <pre
-                style={{
-                    background: "#f5f5f5",
-                    padding: "10px",
-                    borderRadius: "8px",
-                    marginBottom: "1rem",
-                }}
-            >
+            <pre className="code-block">
                 {`import util.DBConnection;
 import java.sql.Connection;
 
@@ -157,13 +129,7 @@ public class Main {
             </pre>
 
             <h3>✅ Output:</h3>
-            <pre
-                style={{
-                    background: "#e0f2fe",
-                    padding: "10px",
-                    borderRadius: "8px",
-                }}
-            >
+            <pre className="code-block output-block">
                 {`✅ Database connected successfully!
 Connection test successful!`}
             </pre>
@@ -175,16 +141,9 @@ Connection test successful!`}
                 <li>How to create and test a reusable database connection class</li>
             </ul>
 
-            <div
-                style={{
-                    background: "#dcfce7",
-                    padding: "1rem",
-                    borderRadius: "8px",
-                    marginTop: "1.5rem",
-                }}
-            >
-                💡 <b>Next Step:</b> We’ll now create the <b>Student model class</b> and
-                <b> DAO layer</b> to start performing real CRUD operations.
+            <div className="next-step-box">
+                💡 <b>Next Step:</b> We’ll now create the <b>Student model class</b> and{" "}
+                <b>DAO layer</b> to start performing real CRUD operations.
             </div>
         </div>
     );

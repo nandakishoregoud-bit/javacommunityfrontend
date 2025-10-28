@@ -1,23 +1,16 @@
 import React from "react";
+import "./JdbcGlobal.css"; // ✅ your shared stylesheet
 
 export default function JdbcProjectPackagingAndRunning() {
     return (
-        <div
-            style={{
-                fontFamily: "Arial",
-                lineHeight: 1.8,
-                padding: "1rem",
-                maxWidth: 900,
-                margin: "auto",
-            }}
-        >
+        <div className="jdbc-container">
             <h1>🚀 Packaging and Running Your JDBC Project</h1>
 
             <p>
                 Now that your <b>Student Management System</b> project is complete,
-                let’s see how to structure, compile, and run it like a professional Java
-                application. This step helps you understand how real-world applications
-                are built, packaged, and executed.
+                let’s see how to structure, compile, and run it like a professional
+                Java application. This step helps you understand how real-world
+                applications are built, packaged, and executed.
             </p>
 
             <h2>🏗 Step 1: Project Structure</h2>
@@ -25,14 +18,7 @@ export default function JdbcProjectPackagingAndRunning() {
                 Here’s the typical folder structure for your <b>JDBC project</b>:
             </p>
 
-            <pre
-                style={{
-                    background: "#f3f4f6",
-                    padding: "10px",
-                    borderRadius: "8px",
-                }}
-            >
-                {`StudentManagementSystem/
+            <pre>{`StudentManagementSystem/
 ├── src/
 │   ├── model/
 │   │   └── Student.java
@@ -47,8 +33,7 @@ export default function JdbcProjectPackagingAndRunning() {
 ├── lib/
 │   └── mysql-connector-j-9.0.0.jar
 ├── app.log
-└── README.md`}
-            </pre>
+└── README.md`}</pre>
 
             <p>
                 ✅ The <code>lib</code> folder contains your JDBC driver — required for
@@ -61,13 +46,7 @@ export default function JdbcProjectPackagingAndRunning() {
                 <code>StudentApp.java</code>.
             </p>
 
-            <pre
-                style={{
-                    background: "#f5f5f5",
-                    padding: "10px",
-                    borderRadius: "8px",
-                }}
-            >
+            <div className="code-block">
                 {`package main;
 import dao.StudentDAO;
 import model.Student;
@@ -81,7 +60,7 @@ public class StudentApp {
         dao.getAllStudents();
     }
 }`}
-            </pre>
+            </div>
 
             <h2>⚙️ Step 3: Compiling the Project</h2>
             <p>
@@ -89,35 +68,23 @@ public class StudentApp {
                 project root and run:
             </p>
 
-            <pre
-                style={{
-                    background: "#fef9c3",
-                    padding: "10px",
-                    borderRadius: "8px",
-                }}
-            >
+            <div className="highlight-block">
                 {`javac -d out -cp "lib/*" src/**/*.java`}
-            </pre>
+            </div>
 
             <p>
                 🔹 This command compiles all Java files and puts the class files in the{" "}
                 <code>out</code> folder.
-                🔹 <code>-cp</code> adds the JDBC driver (from the <code>lib</code> folder)
-                to your classpath.
+                🔹 <code>-cp</code> adds the JDBC driver (from the <code>lib</code>{" "}
+                folder) to your classpath.
             </p>
 
             <h2>🚀 Step 4: Running the Project</h2>
             <p>Once compiled, run your main class:</p>
 
-            <pre
-                style={{
-                    background: "#e0f2fe",
-                    padding: "10px",
-                    borderRadius: "8px",
-                }}
-            >
+            <div className="log-block">
                 {`java -cp "out;lib/*" main.StudentApp`}
-            </pre>
+            </div>
 
             <p>
                 💡 For Mac/Linux users, replace <code>;</code> with <code>:</code> in the
@@ -126,18 +93,13 @@ public class StudentApp {
 
             <h2>📦 Step 5: Packaging into a JAR File</h2>
             <p>
-                To distribute your application, package it into a <b>JAR (Java ARchive)</b> file:
+                To distribute your application, package it into a{" "}
+                <b>JAR (Java ARchive)</b> file:
             </p>
 
-            <pre
-                style={{
-                    background: "#f3f4f6",
-                    padding: "10px",
-                    borderRadius: "8px",
-                }}
-            >
+            <div className="code-block">
                 {`jar cfe StudentApp.jar main.StudentApp -C out .`}
-            </pre>
+            </div>
 
             <p>
                 This creates a runnable <code>StudentApp.jar</code> file with the entry
@@ -145,15 +107,9 @@ public class StudentApp {
             </p>
 
             <h3>Run the JAR:</h3>
-            <pre
-                style={{
-                    background: "#fef9c3",
-                    padding: "10px",
-                    borderRadius: "8px",
-                }}
-            >
+            <div className="highlight-block">
                 {`java -cp "StudentApp.jar;lib/*" -jar StudentApp.jar`}
-            </pre>
+            </div>
 
             <h2>🧱 Step 6: Using IDEs (Eclipse or IntelliJ)</h2>
             <ul>
@@ -179,28 +135,15 @@ public class StudentApp {
                 <li>Common JDBC runtime issues and solutions</li>
             </ul>
 
-            <div
-                style={{
-                    background: "#dcfce7",
-                    padding: "1rem",
-                    borderRadius: "8px",
-                    marginTop: "1.5rem",
-                }}
-            >
+            <div className="tip-box">
                 💡 <b>Pro Tip:</b> In real-world Java applications, you can automate
                 build and packaging using tools like <b>Maven</b> or <b>Gradle</b>.
             </div>
 
-            <div
-                style={{
-                    background: "#e0f2fe",
-                    padding: "1rem",
-                    borderRadius: "8px",
-                    marginTop: "1.5rem",
-                }}
-            >
-                🚀 <b>Next Step:</b> Let’s add a page on how to <b>connect this JDBC
-                    project with a frontend (like React)</b> to make it interactive!
+            <div className="next-step">
+                🚀 <b>Next Step:</b> Let’s add a page on how to{" "}
+                <b>connect this JDBC project with a frontend (like React)</b> to make it
+                interactive!
             </div>
         </div>
     );

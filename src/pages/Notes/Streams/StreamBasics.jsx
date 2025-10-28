@@ -43,7 +43,7 @@ export default function StreamBasics() {
     ];
 
     return (
-        <div style={{ fontFamily: "Arial", lineHeight: 2, padding: "1rem", maxWidth: 800, margin: "auto" }}>
+        <div style={{ fontFamily: "Arial", lineHeight: 2, padding: "1.5rem", maxWidth: 900, margin: "auto" }}>
             <h1>💧 Java Streams — Functional Programming Made Simple</h1>
             <p>
                 In Java, <b>Streams</b> provide a modern and functional way to process data. Instead of writing loops, you can use Streams

@@ -1,41 +1,35 @@
 import React from "react";
+import "./JdbcGlobal.css"; // ✅ same global JDBC styles
 
 export default function JdbcProjectMenuInterface() {
     return (
-        <div
-            style={{
-                fontFamily: "Arial",
-                lineHeight: 1.8,
-                padding: "1rem",
-                maxWidth: 900,
-                margin: "auto",
-            }}
-        >
-            <h1>🖥 JDBC Project — Menu Interface (Student Management System)</h1>
+        <div className="jdbc-container">
+            <h1 className="jdbc-title">🖥 JDBC Project — Menu Interface (Student Management System)</h1>
 
-            <p>
-                In this step, we’ll create a <b>menu-driven console interface</b> for our Student Management System.
-                This interface will allow users to perform CRUD (Create, Read, Update, Delete) operations easily.
+            <p className="jdbc-intro">
+                It’s time to make your project <b>interactive!</b> 🎮
+                In this step, we’ll design a simple yet powerful{" "}
+                <b>menu-driven console interface</b> that lets users perform
+                <b> CRUD operations</b> — adding, viewing, updating, and deleting student records.
             </p>
 
-            <h2>🎯 What We’ll Build</h2>
-            <ul>
-                <li>Display a menu with options (Add, View, Update, Delete)</li>
-                <li>Accept user input from the console</li>
-                <li>Call the corresponding <b>DAO methods</b></li>
-                <li>Run continuously until the user exits</li>
+            <h2 className="jdbc-section-title green">🎯 What We’ll Build</h2>
+            <ul className="jdbc-list">
+                <li>🧩 Display a clean console menu with numbered options</li>
+                <li>⌨️ Accept input from the user</li>
+                <li>⚙️ Call the respective <b>DAO methods</b> for each action</li>
+                <li>🔁 Keep running until the user chooses to exit</li>
             </ul>
 
-            <h2>📘 Step 1: Main Application — <code>MainApp.java</code></h2>
+            <h2 className="jdbc-section-title purple">
+                📘 Step 1: Main Application — <code>MainApp.java</code>
+            </h2>
+            <p>
+                Let’s put it all together! The following code shows how to make your console app
+                dynamic and user-friendly:
+            </p>
 
-            <pre
-                style={{
-                    background: "#f5f5f5",
-                    padding: "10px",
-                    borderRadius: "8px",
-                    overflowX: "auto",
-                }}
-            >
+            <pre className="jdbc-code blue">
                 {`import java.util.*;
 import dao.StudentDAO;
 import model.Student;
@@ -54,7 +48,7 @@ public class MainApp {
             System.out.println("5. Exit");
             System.out.print("Enter your choice: ");
             int choice = sc.nextInt();
-            sc.nextLine(); // Consume newline
+            sc.nextLine();
 
             switch (choice) {
                 case 1:
@@ -62,7 +56,7 @@ public class MainApp {
                     String name = sc.nextLine();
                     System.out.print("Enter Age: ");
                     int age = sc.nextInt();
-                    sc.nextLine(); // consume newline
+                    sc.nextLine();
                     System.out.print("Enter Course: ");
                     String course = sc.nextLine();
                     System.out.print("Enter Email: ");
@@ -81,7 +75,6 @@ public class MainApp {
                     System.out.print("Enter Student ID to Update: ");
                     int idToUpdate = sc.nextInt();
                     sc.nextLine();
-
                     System.out.print("Enter New Name: ");
                     String newName = sc.nextLine();
                     System.out.print("Enter New Age: ");
@@ -116,14 +109,9 @@ public class MainApp {
 }`}
             </pre>
 
-            <h2>📋 Example Output</h2>
-            <pre
-                style={{
-                    background: "#eef",
-                    padding: "10px",
-                    borderRadius: "8px",
-                }}
-            >
+            <h2 className="jdbc-section-title orange">🧩 Example Output</h2>
+
+            <pre className="jdbc-code purple-light">
                 {`====== Student Management System ======
 1. Add Student
 2. View All Students
@@ -138,45 +126,31 @@ Enter Email: kishore@gmail.com
 ✅ Student added successfully!`}
             </pre>
 
-            <h3>✅ View All Students</h3>
-            <pre
-                style={{
-                    background: "#fef9c3",
-                    padding: "10px",
-                    borderRadius: "8px",
-                }}
-            >
+            <h3 className="jdbc-subtitle green">✅ View All Students</h3>
+            <pre className="jdbc-code yellow">
                 {`--- All Students ---
 1 | Kishore | 22 | Java | kishore@gmail.com`}
             </pre>
 
-            <h2>🧠 Concepts Used</h2>
-            <ul>
-                <li>Menu-driven <b>switch-case</b> structure</li>
-                <li><b>Scanner</b> for taking user input</li>
-                <li>Integration with <b>DAO Layer</b> for database access</li>
-                <li>Reusable <b>Student model</b> for all CRUD operations</li>
+            <h2 className="jdbc-section-title blue">🧠 Concepts You Used</h2>
+            <ul className="jdbc-list">
+                <li>🧮 Menu-driven <b>switch-case</b> logic</li>
+                <li>📥 Using <b>Scanner</b> for input handling</li>
+                <li>🔗 DAO integration for database operations</li>
+                <li>📦 Reusing your <b>Student model</b> for all CRUD actions</li>
             </ul>
 
-            <h2>🧠 What You Learned</h2>
-            <ul>
-                <li>How to create a menu-driven console app</li>
-                <li>How to connect the interface with the DAO layer</li>
-                <li>How to simulate real project CRUD operations</li>
+            <h2 className="jdbc-section-title purple">📚 What You Learned</h2>
+            <ul className="jdbc-list">
+                <li>How to build a user-friendly console menu</li>
+                <li>How to connect logic with database functions</li>
+                <li>How to simulate real-world CRUD operations</li>
             </ul>
 
-            <div
-                style={{
-                    background: "#dcfce7",
-                    padding: "1rem",
-                    borderRadius: "8px",
-                    marginTop: "1.5rem",
-                }}
-            >
-                💡 <b>Tip:</b> You can later upgrade this menu-based project to a{" "}
-                <b>JDBC + Swing GUI</b> or even connect it to a <b>Spring Boot REST API</b> for a full-stack version!
+            <div className="jdbc-tip green-bg">
+                💡 <b>Tip:</b> Want to take this further? Transform this menu-driven app into a{" "}
+                <b>JDBC + Swing desktop GUI</b> or even a <b>Spring Boot REST API</b> to make it web-based!
             </div>
-
         </div>
     );
 }

@@ -1,0 +1,53 @@
+.footer {
+    background: #0f172a;
+    color: #e2e8f0;
+    text-align: center;
+    padding: 1rem 2rem;
+    font-family: "Inter", sans-serif;
+    line-height: 0.2;
+    border-top: 1px solid #1e293b;
+}
+
+.footer strong {
+    color: #facc15;
+    /* golden accent for brand name */
+}
+
+.footer-tagline {
+    font-size: 0.95rem;
+    color: #94a3b8;
+    margin-bottom: 0.8rem;
+}
+
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.footer-links a {
+    color: #e2e8f0;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.footer-links a:hover {
+    color: #38bdf8;
+    /* light blue hover */
+    transform: scale(1.05);
+}
+
+/* responsive adjustment */
+@media (max-width: 600px) {
+    .footer {
+        font-size: 0.9rem;
+        padding: 1rem;
+    }
+
+    .footer-links {
+        gap: 0.7rem;
+    }
+}

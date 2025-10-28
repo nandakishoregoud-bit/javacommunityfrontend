@@ -1,0 +1,161 @@
+/* 🌐 Global Typography */
+body {
+    font-family: "Inter", "Segoe UI", Roboto, Arial, sans-serif;
+    background-color: #f8fafc;
+    color: #1e293b;
+    margin: 0;
+    padding: 0;
+    line-height: 1.8;
+}
+
+/* 🔹 Main Content Container */
+.jdbc-container {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* 🧭 Headings */
+h1 {
+    color: #2563eb;
+    text-align: center;
+    font-size: 1.9rem;
+    margin-bottom: 1.5rem;
+}
+
+h2 {
+    color: #1e40af;
+    font-size: 1.4rem;
+    margin-top: 1.8rem;
+}
+
+h3 {
+    color: #334155;
+    font-size: 1.15rem;
+    margin-top: 1.2rem;
+}
+
+/* 📝 Text and Lists */
+p {
+    font-size: 1.05rem;
+    margin-bottom: 1rem;
+}
+
+ul {
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+li {
+    margin-bottom: 0.5rem;
+}
+
+/* 💻 Code Blocks */
+.code-block {
+    background: #f1f5f9;
+    color: #111827;
+    padding: 1rem;
+    border-radius: 10px;
+    font-family: "Fira Code", monospace;
+    font-size: 0.95rem;
+    overflow-x: auto;
+    border: 1px solid #e2e8f0;
+}
+
+.highlight-block {
+    background: #fef9c3;
+    color: #1e293b;
+    padding: 1rem;
+    border-radius: 10px;
+    font-family: "Fira Code", monospace;
+    border: 1px solid #fde68a;
+}
+
+.log-block {
+    background: #eef2ff;
+    color: #1e293b;
+    padding: 1rem;
+    border-radius: 10px;
+    font-family: "Fira Code", monospace;
+    font-size: 0.95rem;
+    border-left: 4px solid #6366f1;
+}
+
+/* 💡 Info & Tip Boxes */
+.tip-box {
+    background: #dcfce7;
+    border-left: 5px solid #16a34a;
+    padding: 1rem 1.2rem;
+    border-radius: 10px;
+    margin-top: 2rem;
+    font-size: 1rem;
+}
+
+.warning-box {
+    background: #fef3c7;
+    border-left: 5px solid #eab308;
+    padding: 1rem 1.2rem;
+    border-radius: 10px;
+    margin-top: 1.5rem;
+    font-size: 1rem;
+}
+
+.next-step {
+    background: #e0f2fe;
+    border-left: 5px solid #0284c7;
+    padding: 1rem 1.2rem;
+    border-radius: 10px;
+    margin-top: 1.5rem;
+    font-size: 1rem;
+}
+
+/* 🧱 Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+th,
+td {
+    padding: 0.8rem 1rem;
+    text-align: left;
+}
+
+thead {
+    background-color: #e0f2fe;
+    color: #0f172a;
+    font-weight: 600;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f8fafc;
+}
+
+/* 🧭 Preformatted text (flow diagrams, etc.) */
+pre {
+    background: #f1f5f9;
+    padding: 1rem;
+    border-radius: 10px;
+    border-left: 5px solid #3b82f6;
+    overflow-x: auto;
+    font-family: "Fira Code", monospace;
+    font-size: 0.95rem;
+}
+
+/* ✨ Smooth transitions */
+h1,
+h2,
+h3,
+p,
+li,
+.code-block,
+.tip-box {
+    transition: all 0.3s ease-in-out;
+}

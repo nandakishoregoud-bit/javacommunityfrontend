@@ -3,16 +3,19 @@
     position: fixed;
     top: 0;
     left: 0;
-    height: 100vh;
+    height: 200vh;
     width: 260px;
     background-color: #1e293b;
     color: #fff;
     overflow-y: auto;
+    overflow-x: hidden;
     transform: translateX(-100%);
     transition: transform 0.3s ease;
     z-index: 200;
     padding: 1rem;
     font-family: "Inter", sans-serif;
+    display: flex;
+    flex-direction: column;
 }
 
 .sidebar.active {
@@ -54,12 +57,28 @@
     padding-left: 1rem;
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.3s ease;
+    transition: max-height 0.35s ease-out;
 }
 
 .subtopics.open {
-    max-height: 600px;
+    max-height: 300px;
+    /* Limit dropdown height */
     overflow-y: auto;
+    padding-bottom: 0.3rem;
+}
+
+/* Optional: nice scrollbar for subtopics */
+.subtopics.open::-webkit-scrollbar {
+    width: 6px;
+}
+
+.subtopics.open::-webkit-scrollbar-thumb {
+    background: #475569;
+    border-radius: 4px;
+}
+
+.subtopics.open::-webkit-scrollbar-thumb:hover {
+    background: #38bdf8;
 }
 
 .subtopics li a {
@@ -126,4 +145,15 @@
     font-size: 1.3rem;
     padding: 0.4rem 0.8rem;
     cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 80%;
+        max-width: 280px;
+    }
+
+    .subtopics.open {
+        max-height: 250px;
+    }
 }

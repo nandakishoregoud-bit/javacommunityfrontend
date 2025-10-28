@@ -1,16 +1,9 @@
 import React from "react";
+import "./JdbcProjectExceptionHandling.css";
 
 export default function JdbcProjectExceptionHandling() {
     return (
-        <div
-            style={{
-                fontFamily: "Arial",
-                lineHeight: 1.8,
-                padding: "1rem",
-                maxWidth: 900,
-                margin: "auto",
-            }}
-        >
+        <div className="jdbc-exception">
             <h1>⚙️ JDBC Project — Exception Handling & Logging</h1>
 
             <p>
@@ -20,29 +13,25 @@ export default function JdbcProjectExceptionHandling() {
                 these problems gracefully without crashing.
             </p>
 
-            <h2>🎯 Objectives</h2>
-            <ul>
-                <li>Understand why we need exception handling in JDBC</li>
-                <li>Use <code>try-catch-finally</code> to handle SQL exceptions</li>
-                <li>Implement <b>custom exception messages</b></li>
-                <li>Add <b>logging</b> for better debugging (using <code>java.util.logging</code>)</li>
-            </ul>
+            <section>
+                <h2>🎯 Objectives</h2>
+                <ul>
+                    <li>Understand why we need exception handling in JDBC</li>
+                    <li>Use <code>try-catch-finally</code> to handle SQL exceptions</li>
+                    <li>Implement <b>custom exception messages</b></li>
+                    <li>Add <b>logging</b> for better debugging (using <code>java.util.logging</code>)</li>
+                </ul>
+            </section>
 
-            <h2>📘 Step 1: Basic Exception Handling in DAO</h2>
-            <p>
-                Let’s modify the <code>StudentDAO</code> class to handle exceptions in a
-                clean and consistent way.
-            </p>
+            <section>
+                <h2>📘 Step 1: Basic Exception Handling in DAO</h2>
+                <p>
+                    Let’s modify the <code>StudentDAO</code> class to handle exceptions in a
+                    clean and consistent way.
+                </p>
 
-            <pre
-                style={{
-                    background: "#f5f5f5",
-                    padding: "10px",
-                    borderRadius: "8px",
-                    overflowX: "auto",
-                }}
-            >
-                {`import java.sql.*;
+                <pre className="code-block">
+                    {`import java.sql.*;
 import java.util.*;
 import model.Student;
 import util.DBConnection;
@@ -100,120 +89,92 @@ public class StudentDAO {
         return list;
     }
 }`}
-            </pre>
+                </pre>
+            </section>
 
-            <h2>🧠 Why Use Logging?</h2>
-            <p>
-                Using <code>Logger</code> gives you more control over error tracking.
-                Instead of printing stack traces to the console, logs can be saved to a
-                file and analyzed later.
-            </p>
+            <section>
+                <h2>🧠 Why Use Logging?</h2>
+                <p>
+                    Using <code>Logger</code> gives you more control over error tracking.
+                    Instead of printing stack traces to the console, logs can be saved to a
+                    file and analyzed later.
+                </p>
 
-            <h3>🧾 Example Log Output:</h3>
-            <pre
-                style={{
-                    background: "#eef",
-                    padding: "10px",
-                    borderRadius: "8px",
-                }}
-            >
-                {`INFO: Student added: Kishore
+                <h3>🧾 Example Log Output:</h3>
+                <pre className="log-block">
+                    {`INFO: Student added: Kishore
 INFO: Fetched 5 students from database.
 SEVERE: Error adding student: Duplicate entry for email 'kishore@gmail.com'`}
-            </pre>
+                </pre>
+            </section>
 
-            <h2>🧱 Step 2: Custom Exception Class</h2>
-            <p>
-                Let’s define a custom exception to handle specific database errors in a
-                more meaningful way.
-            </p>
+            <section>
+                <h2>🧱 Step 2: Custom Exception Class</h2>
+                <p>
+                    Let’s define a custom exception to handle specific database errors in a
+                    more meaningful way.
+                </p>
 
-            <pre
-                style={{
-                    background: "#fef9c3",
-                    padding: "10px",
-                    borderRadius: "8px",
-                }}
-            >
-                {`package exceptions;
+                <pre className="highlight-block">
+                    {`package exceptions;
 
 public class DatabaseException extends Exception {
     public DatabaseException(String message) {
         super(message);
     }
 }`}
-            </pre>
+                </pre>
 
-            <h3>How to Use It:</h3>
-            <pre
-                style={{
-                    background: "#f5f5f5",
-                    padding: "10px",
-                    borderRadius: "8px",
-                }}
-            >
-                {`try {
+                <h3>How to Use It:</h3>
+                <pre className="code-block">
+                    {`try {
     dao.addStudent(student);
 } catch (DatabaseException e) {
     System.out.println("Database error: " + e.getMessage());
 }`}
-            </pre>
+                </pre>
+            </section>
 
-            <h2>🧩 Step 3: Logger Configuration (Optional)</h2>
-            <p>
-                You can configure logging to write to a file using a <code>logging.properties</code> file or programmatically:
-            </p>
+            <section>
+                <h2>🧩 Step 3: Logger Configuration (Optional)</h2>
+                <p>
+                    You can configure logging to write to a file using a <code>logging.properties</code> file or programmatically:
+                </p>
 
-            <pre
-                style={{
-                    background: "#f5f5f5",
-                    padding: "10px",
-                    borderRadius: "8px",
-                    overflowX: "auto",
-                }}
-            >
-                {`FileHandler fh = new FileHandler("app.log", true);
+                <pre className="code-block">
+                    {`FileHandler fh = new FileHandler("app.log", true);
 Logger logger = Logger.getLogger("JDBCLogger");
 logger.addHandler(fh);
 logger.info("Application started successfully.");`}
-            </pre>
+                </pre>
+            </section>
 
-            <h2>🛠 Best Practices</h2>
-            <ul>
-                <li>Use <code>try-with-resources</code> for auto-closing JDBC objects.</li>
-                <li>Log all SQL operations and exceptions.</li>
-                <li>Use <b>custom exceptions</b> for clear error reporting.</li>
-                <li>Never expose database errors directly to end users.</li>
-            </ul>
+            <section>
+                <h2>🛠 Best Practices</h2>
+                <ul>
+                    <li>Use <code>try-with-resources</code> for auto-closing JDBC objects.</li>
+                    <li>Log all SQL operations and exceptions.</li>
+                    <li>Use <b>custom exceptions</b> for clear error reporting.</li>
+                    <li>Never expose database errors directly to end users.</li>
+                </ul>
+            </section>
 
-            <h2>🧠 What You Learned</h2>
-            <ul>
-                <li>How to use try-catch properly in JDBC</li>
-                <li>Why and how to use a Logger</li>
-                <li>How to create and use a custom exception</li>
-                <li>How to separate user-friendly messages from technical logs</li>
-            </ul>
+            <section>
+                <h2>🧠 What You Learned</h2>
+                <ul>
+                    <li>How to use try-catch properly in JDBC</li>
+                    <li>Why and how to use a Logger</li>
+                    <li>How to create and use a custom exception</li>
+                    <li>How to separate user-friendly messages from technical logs</li>
+                </ul>
+            </section>
 
-            <div
-                style={{
-                    background: "#dcfce7",
-                    padding: "1rem",
-                    borderRadius: "8px",
-                    marginTop: "1.5rem",
-                }}
-            >
+            <div className="tip-box">
                 💡 <b>Tip:</b> You can later replace <code>java.util.logging</code> with more advanced
                 frameworks like <b>SLF4J</b> or <b>Log4j</b> for better log management.
             </div>
 
-            <div
-                style={{
-                    background: "#e0f2fe",
-                    padding: "1rem",
-                    borderRadius: "8px",
-                    marginTop: "1.5rem",
-                }}
-            >
+            <div className="next-step">
                 🚀 <b>Next Step:</b> Let’s create a new page on how to{" "}
                 <b>package and run this JDBC project</b> as a complete Java application.
             </div>

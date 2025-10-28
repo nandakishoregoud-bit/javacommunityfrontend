@@ -43,7 +43,7 @@ export default function StreamCollect() {
     ];
 
     return (
-        <div style={{ fontFamily: "Arial", lineHeight: 2, padding: "1rem", maxWidth: 800, margin: "auto" }}>
+        <div style={{ fontFamily: "Arial", lineHeight: 2, padding: "1.5rem", maxWidth: 900, margin: "auto" }}>
             <h1>🧺 Stream <code>collect()</code> in Java</h1>
             <p>
                 The <b>collect()</b> method is a <b>terminal operation</b> in Java Streams that gathers elements

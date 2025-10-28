@@ -29,7 +29,7 @@ export default function LoopingStatements() {
     ];
 
     return (
-        <div style={{ fontFamily: 'Arial', lineHeight: 2, padding: '1rem', maxWidth: 800, margin: 'auto' }}>
+        <div style={{ fontFamily: 'Arial', lineHeight: 2, padding: '1.5rem', maxWidth: 900, margin: 'auto' }}>
             <h1>Looping Statements in Java</h1>
             <p>
                 Looping statements allow code to run repeatedly until a specific condition is met. They are useful when
